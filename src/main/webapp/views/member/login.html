@@ -13,40 +13,52 @@
         $(function () {
             $("#sub-btn").click(function (event) {
                 event.preventDefault();  // 取消submit按钮的默认提交行为
-
                 const username = $("#username").val();
                 const password = $("#password").val();
                 const repwd = $("#repwd").val();
                 const email = $("#email").val();
                 const code = $("#code").val();
-
                 const regU = /^\w{4,16}$/
                 const regP = /^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\W_!@#$%^&*`~()-+=]+$)(?![a-z0-9]+$)(?![a-z\W_!@#$%^&*`~()-+=]+$)(?![0-9\W_!@#$%^&*`~()-+=]+$)[a-zA-Z0-9\W_!@#$%^&*`~()-+=]/
                 const regE = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
                 if (username === "" || password === "" || repwd === "" || email === "" || code === "") {
-                    $(".errorMsg").text("请填写完整信息");
+                    $(".errorMsg").text("请填写完整信息").css("color", "red");
                     return;
                 }
-
                 if (!regU.test(username)) {
-                    $(".errorMsg").html("用户名格式不正确<br>4-16位字母数字下划线");
+                    $(".errorMsg").html("用户名格式不正确<br>4-16位字母数字下划线").css("color", "red");
                     return;
                 }
                 if (!regP.test(password)) {
-                    $(".errorMsg").html("密码格式不正确<br>大写字母，小写字母，数字，特殊符号 `@#$%^&*`~()-+=` 中任意3项");
+                    $(".errorMsg").html("密码格式不正确<br>大写字母，小写字母，数字，特殊符号 `@#$%^&*`~()-+=` 中任意3项").css("color", "red");
                     return;
                 }
                 if (password !== repwd) {
-                    $(".errorMsg").text("两次密码不一致");
+                    $(".errorMsg").text("两次密码不一致").css("color", "red");
                     return;
                 }
                 if (!regE.test(email)) {
-                    $(".errorMsg").text("邮箱格式不正确");
+                    $(".errorMsg").text("邮箱格式不正确").css("color", "red");
                     return;
                 }
-
-
+                $.ajax({
+                    url: "../../register",
+                    type: "post",
+                    data: JSON.stringify({
+                        username: username,
+                        password: password,
+                        email: email,
+                        code: code
+                    }),
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        $(".errorMsg").text("注册成功,您的id是" + data.id + "!").css("color", "green");
+                    },
+                    error: function (xhr) {
+                        $(".errorMsg").text(xhr.responseText).css("color", "red");
+                    }
+                })
             });
         })
     </script>
@@ -202,7 +214,6 @@
                     <!-- End single blog -->
                     <!-- Start single blog -->
                     <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="800">
-
                     </div>
                     <!-- End single blog -->
                 </div>
