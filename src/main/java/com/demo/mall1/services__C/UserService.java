@@ -9,4 +9,5 @@ public interface UserService {
     boolean register(RegisterInfo registerInfo);
 
     User getUserByUsername(String username) throws SQLException;
+
 }

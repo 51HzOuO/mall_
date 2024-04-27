@@ -15,6 +15,8 @@ import java.sql.SQLException;
 
 @WebServlet(urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
+    public static final ThreadLocal<String> returnInfo = new ThreadLocal<>();
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         UserService memberService = new UserServiceImpl();
@@ -28,7 +30,7 @@ public class RegisterServlet extends HttpServlet {
                 throw new RuntimeException(e);
             }
         } else {
-            resp.getWriter().write("AlreadyExists");
+            resp.getWriter().write(returnInfo.get());
         }
     }
 }
