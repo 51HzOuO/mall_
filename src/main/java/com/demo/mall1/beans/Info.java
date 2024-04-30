@@ -1,10 +1,17 @@
 package com.demo.mall1.beans;
 
-public class RegisterInfo {
+public class Info {
     private String username;
     private String password;
     private String email;
     private String code;
+
+    public Info(String username, String password, String email, String number) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.code = number;
+    }
 
     public String getUsername() {
         return username;
