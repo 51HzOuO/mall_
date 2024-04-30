@@ -1,3 +1,7 @@
+<%@ page isELIgnored="false" %>
+<%--<%@ page contentType="text/html;charset=UTF-8" %>--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +24,7 @@
                 const code = $("#code").val();
                 const regU = /^\w{4,16}$/
                 const regP = /^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\W_!@#$%^&*`~()-+=]+$)(?![a-z0-9]+$)(?![a-z\W_!@#$%^&*`~()-+=]+$)(?![0-9\W_!@#$%^&*`~()-+=]+$)[a-zA-Z0-9\W_!@#$%^&*`~()-+=]/
-                const regE = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                const regE = /^[A-Za-z0-9一-龥]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
                 if (username === "" || password === "" || repwd === "" || email === "" || code === "") {
                     $(".errorMsg").text("请填写完整信息").css("color", "red");
                     return;
@@ -30,7 +34,7 @@
                     return;
                 }
                 if (!regP.test(password)) {
-                    $(".errorMsg").html("密码格式不正确<br>大写字母，小写字母，数字，特殊符号 `@#$%^&*`~()-+=` 中任意3项").css("color", "red");
+                    $(".errorMsg").html("密码格式不正确<br>大写字母，小写字母，数字，特殊符号 任意3项").css("color", "red");
                     return;
                 }
                 if (password !== repwd) {
@@ -42,7 +46,7 @@
                     return;
                 }
                 $.ajax({
-                    url: "../../register",
+                    url: "../../login",
                     type: "post",
                     data: JSON.stringify({
                         username: username,
@@ -52,7 +56,6 @@
                     }),
                     dataType: "json",
                     success: function (data) {
-                        console.log(data);
                         $(".errorMsg").text("注册成功,您的id是" + data.id + "!").css("color", "green");
                     },
                     error: function (xhr) {
@@ -60,6 +63,42 @@
                     }
                 })
             });
+            $("#login-btn").click(function (event) {
+                event.preventDefault();  // 取消submit按钮的默认提交行为
+                const username = $("input[name='user-name']").val();
+                const password = $("input[name='user-password']").val();
+                if (username === "" || password === "") {
+                    $(".errorMsg1").text("请填写完整信息").css("color", "red");
+                    return;
+                }
+                let regU = /^\w{4,16}$/
+                let regP = /^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\W_!@#$%^&*`~()-+=]+$)(?![a-z0-9]+$)(?![a-z\W_!@#$%^&*`~()-+=]+$)(?![0-9\W_!@#$%^&*`~()-+=]+$)[a-zA-Z0-9\W_!@#$%^&*`~()-+=]/
+                if (!regU.test(username)) {
+                    $(".errorMsg1").html("用户名格式不正确").css("color", "red");
+                    return;
+                }
+                if (!regP.test(password)) {
+                    $(".errorMsg1").html("密码格式不正确").css("color", "red");
+                    return;
+                }
+                $.ajax({
+                    url: "../../login",
+                    type: "post",
+                    data: JSON.stringify({
+                        username: username,
+                        password: password
+                    }),
+                    success: function (data) {
+                        //重定向到login_ok.html
+                        if (data === "ok")
+                            window.location.href = "../../login_ok.html";
+                        else {
+                            $(".errorMsg1").text(data).css("color", "red");
+                            $("#login-password").val("");
+                        }
+                    }
+                })
+            })
         })
     </script>
 </head>
@@ -79,7 +118,6 @@
                     </div>
                 </div>
                 <!-- Header Logo End -->
-
             </div>
         </div>
     </div>
@@ -121,16 +159,19 @@
                         <div id="lg1" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <form action="#" method="post">
+                                    <form method="post">
+                                        <span class="errorMsg1"
+                                              style="float: right; font-weight: bold; font-size: 20pt; margin-left: 10px;"></span>
                                         <input type="text" name="user-name" placeholder="Username"/>
-                                        <input type="password" name="user-password" placeholder="Password"/>
+                                        <input type="password" name="user-password" placeholder="Password"
+                                               id="login-password"/>
                                         <div class="button-box">
                                             <div class="login-toggle-btn">
                                                 <input type="checkbox"/>
                                                 <a class="flote-none" href="javascript:void(0)">Remember me</a>
                                                 <a href="#">Forgot Password?</a>
                                             </div>
-                                            <button type="submit"><span>Login</span></button>
+                                            <button type="submit" id="login-btn"><span>Login</span></button>
                                         </div>
                                     </form>
                                 </div>
@@ -148,8 +189,9 @@
                                         <input type="password" id="repwd" name="user-password" placeholder="确认密码"/>
                                         <input name="user-email" id="email" placeholder="电子邮件" type="email"/>
                                         <input type="text" id="code" name="user-name" style="width: 50%" id="code"
-                                               placeholder="验证码"/>　　<img alt=""
-                                                                            src="../../assets/images/code/code.bmp">
+                                               placeholder="验证码" 　　>
+                                        <img alt=""
+                                             src="../../assets/images/code/code.bmp">四位数即可通过
                                         <div class="button-box">
                                             <button type="submit" id="sub-btn"><span>会员注册</span></button>
                                         </div>
@@ -203,7 +245,7 @@
                                         <li class="li"><a class="single-link" href="my-account.html">我的账号</a>
                                         </li>
                                         <li class="li"><a class="single-link" href="cart.html">我的购物车</a></li>
-                                        <li class="li"><a class="single-link" href="login.html">登录</a></li>
+                                        <li class="li"><a class="single-link" href="login.jsp">登录</a></li>
                                         <li class="li"><a class="single-link" href="wishlist.html">感兴趣的</a></li>
                                         <li class="li"><a class="single-link" href="checkout.html">结账</a></li>
                                     </ul>
