@@ -3,7 +3,7 @@ package com.demo.mall1.web__V;
 import com.demo.mall1.beans.Info;
 import com.demo.mall1.beans.User;
 import com.demo.mall1.services__C.UserService;
-import com.demo.mall1.services__C.UserServiceImpl;
+import com.demo.mall1.services__C.impl.UserServiceImpl;
 import com.demo.mall1.utils.GetGson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,10 +14,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "/login")
+@WebServlet(urlPatterns = "/loginService")
 public class LoginServlet extends HttpServlet {
     public static final ThreadLocal<Object> returnInfo = new ThreadLocal<>();
-    private static final UserService memberService = new UserServiceImpl();
+    private final UserService memberService = new UserServiceImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

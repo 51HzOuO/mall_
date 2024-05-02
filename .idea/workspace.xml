@@ -9,23 +9,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ff93bf5-93ce-4e24-93ad-a22a2f1e4ce8" name="Changes" comment="add: Register">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/LoginServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/RegisterServlet__.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/listener/ServletInitListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/member/test.jsp" afterDir="false" />
+    <list default="true" id="4ff93bf5-93ce-4e24-93ad-a22a2f1e4ce8" name="Changes" comment="add: login">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/beans/Furn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/services__C/FurnService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/services__C/impl/FurnServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/BasicServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/dirext/ManageLogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/dirext/ManageMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/filter/ManageLoginFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/filter/ManageMenuFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/filter/MultiLoginFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/template/ManageServlet__还没用.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/template/UserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/mall1/beans/RegisterInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/beans/Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/mall1/beans/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/beans/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/mall1/services__C/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/services__C/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/mall1/services__C/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/services__C/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/RegisterServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/mall1/services__C/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/services__C/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/RegisterServlet__.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/RegisterServlet__.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/404.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/500.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/500.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cart.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/checkout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/member/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/member/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/furn_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/furn_add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/furn_manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/furn_manage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/furn_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/furn_update.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login_ok.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login_ok.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/manage_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/manage_login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/manage_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/manage_menu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/order_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/register_fail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register_fail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/register_ok.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register_ok.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/member/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/member/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/member/test.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,9 +57,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Jsp File" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -93,51 +114,51 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.GetQueryRunnerTest.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.MainTest.test.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.login.html.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Tomcat Server.Tomcat.executor&quot;: &quot;Run&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev1&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last.edited.regexp&quot;: &quot;thresh1.&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/demo/mall1/src/main/webapp&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15429688&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2786127&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.FurnServiceImpl.executor": "Debug",
+    "Application.GetQueryRunnerTest.executor": "Run",
+    "Application.Main.executor": "Run",
+    "JUnit.MainTest.test.executor": "Run",
+    "JavaScript Debug.furn_manage.jsp.executor": "Run",
+    "JavaScript Debug.login.html.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Tomcat Server.Tomcat.executor": "Run",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "dev1",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last.edited.regexp": "thresh1.",
+    "last_opened_file_path": "C:/Users/User/Desktop/demo/mall1/src/main/webapp",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15429688",
+    "project.structure.side.proportion": "0.2786127",
+    "settings.editor.selected.configurable": "editor.preferences.tabs",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\Desktop\demo\mall1\src\main\webapp" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\demo\mall1\src\main\webapp\views\manage" />
+      <recent name="C:\Users\User\Desktop\demo\mall1\src\main\webapp" />
+      <recent name="C:\Users\User\Desktop\demo\mall1\src\main\webapp\views\member" />
+    </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="mall1" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat" ALTERNATIVE_JRE_ENABLED="false">
       <option name="BROWSER_ID" value="37cae5b9-e8b2-4949-9172-aafa37fbc09c" />
       <option name="UPDATING_POLICY" value="redeploy-artifacts" />
@@ -226,11 +247,6 @@
         </option>
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -257,6 +273,10 @@
       <workItem from="1714291901666" duration="373000" />
       <workItem from="1714292286248" duration="6288000" />
       <workItem from="1714384712840" duration="6481000" />
+      <workItem from="1714471967630" duration="2658000" />
+      <workItem from="1714534065045" duration="8073000" />
+      <workItem from="1714562290532" duration="3592000" />
+      <workItem from="1714607388741" duration="13323000" />
     </task>
     <task id="LOCAL-00001" summary="add: front verification">
       <option name="closed" value="true" />
@@ -282,7 +302,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714210586764</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add: login">
+      <option name="closed" value="true" />
+      <created>1714439526812</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714439526812</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,12 +345,18 @@
     <MESSAGE value="123" />
     <MESSAGE value="add: RegisterVerify" />
     <MESSAGE value="add: RegisterVerify" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: RegisterVerify" />
+    <MESSAGE value="add: login" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: login" />
   </component>
   <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.demo.mall1.beans.Furn" memberName="price" />
+      </pinned-members>
+    </pin-to-top-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
-        <watch expression="returnInfo.get()" language="JAVA" />
+        <watch expression="req.getRequestURI()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
