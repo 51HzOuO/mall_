@@ -46,7 +46,7 @@
                     return;
                 }
                 $.ajax({
-                    url: "../../login",
+                    url: "../../loginService",
                     type: "post",
                     data: JSON.stringify({
                         username: username,
@@ -82,7 +82,7 @@
                     return;
                 }
                 $.ajax({
-                    url: "../../login",
+                    url: "../../loginService",
                     type: "post",
                     data: JSON.stringify({
                         username: username,
@@ -114,7 +114,7 @@
                 <!-- Header Logo Start -->
                 <div class="col-auto align-self-center">
                     <div class="header-logo">
-                        <a href="../../index.html"><img src="../../assets/images/logo/logo.png" alt="Site Logo"/></a>
+                        <a href="../../index.jsp"><img src="../../assets/images/logo/logo.png" alt="Site Logo"/></a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -245,7 +245,7 @@
                                         <li class="li"><a class="single-link" href="my-account.html">我的账号</a>
                                         </li>
                                         <li class="li"><a class="single-link" href="cart.html">我的购物车</a></li>
-                                        <li class="li"><a class="single-link" href="login.jsp">登录</a></li>
+                                        <li class="li"><a class="single-link" href="login">登录</a></li>
                                         <li class="li"><a class="single-link" href="wishlist.html">感兴趣的</a></li>
                                         <li class="li"><a class="single-link" href="checkout.html">结账</a></li>
                                     </ul>

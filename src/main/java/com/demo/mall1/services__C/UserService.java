@@ -11,4 +11,6 @@ public interface UserService {
     User getUserByUsername(String username) throws SQLException;
 
     boolean login(User user);
+
+    boolean login(String username, String password);
 }
