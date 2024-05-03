@@ -20,12 +20,14 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/services__C/FurnService.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/services__C/impl/FurnServiceImpl.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/services__C/impl/UserServiceImpl.java" afterDir="false" />
+
       <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/BasicServlet.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/dirext/ManageLogin.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/dirext/ManageMenu.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/filter/ManageLoginFilter.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/filter/ManageMenuFilter.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/filter/MultiLoginFilter.java" afterDir="false" />
+
       <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/template/ManageServlet.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/template/UserServlet.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/jquery-3.7.1.min.js" afterDir="false" />
@@ -46,6 +48,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_4_25_下午_7_31_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_4_25_下午_7_44_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,9 +58,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Jsp File" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -112,6 +115,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.GetQueryRunnerTest.executor&quot;: &quot;Run&quot;,
@@ -138,26 +142,24 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\Desktop\demo\mall1\src\main\webapp\assets\js" />
       <recent name="C:\Users\User\Desktop\demo\mall1\src\main\webapp" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\demo\mall1\src\main\webapp\views\manage" />
+      <recent name="C:\Users\User\Desktop\demo\mall1\src\main\webapp" />
+      <recent name="C:\Users\User\Desktop\demo\mall1\src\main\webapp\views\member" />
+    </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="mall1" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat" ALTERNATIVE_JRE_ENABLED="false">
       <option name="BROWSER_ID" value="37cae5b9-e8b2-4949-9172-aafa37fbc09c" />
       <option name="UPDATING_POLICY" value="redeploy-artifacts" />
@@ -246,11 +248,6 @@
         </option>
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -277,6 +274,7 @@
       <workItem from="1714291901666" duration="373000" />
       <workItem from="1714292286248" duration="6288000" />
       <workItem from="1714384712840" duration="6481000" />
+
       <workItem from="1714645377195" duration="2437000" />
       <workItem from="1714700082006" duration="1674000" />
       <workItem from="1714704245756" duration="13308000" />
@@ -348,6 +346,7 @@
     <MESSAGE value="123" />
     <MESSAGE value="add: RegisterVerify" />
     <MESSAGE value="add: RegisterVerify" />
+
     <MESSAGE value="sync data :: furn_manage furn_update | furn add" />
     <option name="LAST_COMMIT_MESSAGE" value="sync data :: furn_manage furn_update | furn add" />
   </component>
