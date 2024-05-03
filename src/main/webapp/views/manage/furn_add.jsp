@@ -47,9 +47,6 @@
                 return false;
             }
 
-            console.log('Price:', price);
-            console.log('Sales:', sales);
-            console.log('Stock:', stock);
             // 验证价格
             if (!/^\d*\.?\d*$/.test(price)) {
                 alert('非法输入');
