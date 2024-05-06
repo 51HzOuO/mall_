@@ -147,10 +147,10 @@
 
                         <!-- Single Wedge Start -->
                         <div class="header-bottom-set dropdown">
-                            <a href="#">家居管理</a>
+                            <a href="furn_manage.jsp">家居管理</a>
                         </div>
                         <div class="header-bottom-set dropdown">
-                            <a href="#">订单管理</a>
+                            <a href="order.jsp">订单管理</a>
                         </div>
                     </div>
                 </div>
@@ -203,7 +203,7 @@
                             <tbody>
                             <tr>
                                 <td class="product-quantity">
-                                    <input name="id" style="width: 90%" type="text"/>
+                                    <input name="id" id="idInput" style="width: 90%" type="text"/>
                                 </td>
                                 <td class="product-thumbnail">
                                     <img src="../../assets/images/product-image/default.jpg" id="img-preview"
@@ -214,12 +214,12 @@
                                 <td class="product-name"><input name="name" id="furnitureName" style="width: 60%"
                                                                 type="text"/></td>
                                 <td class="product-name"><input name="maker" style="width: 90%" type="text"/></td>
-                                <td class="product-price-cart"><input name="price" style="width: 90%" type="text"/></td>
+                                <td class="product-price-cart"><input name="price" id="priceInput" style="width: 90%" type="text"/></td>
                                 <td class="product-quantity">
-                                    <input name="sales" style="width: 90%" type="text"/>
+                                    <input name="sales" id="salesInput" style="width: 90%" type="text"/>
                                 </td>
                                 <td class="product-quantity">
-                                    <input name="stock" style="width: 90%" type="text"/>
+                                    <input name="stock" id="stockInput" style="width: 90%" type="text"/>
                                 </td>
                                 <td>
                                     <!--                                    <a href="#"><i class="icon-pencil"></i></a>-->

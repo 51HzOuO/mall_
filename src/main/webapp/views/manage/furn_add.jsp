@@ -37,24 +37,19 @@
     <script>
 
         function validateForm() {
-            var id = $('#idInput').val();
             var fileInput = document.getElementById('fileInput');
             var price = $('#priceInput').val();
             var sales = $('#salesInput').val();
             var stock = $('#stockInput').val();
-
-            // 验证 ID
-            if (!/^\d+$/.test(id)) {
-                alert('ID 必须为整数');
-                return false;
-            }
-
             // 验证图片
             if (!fileInput.files.length || !['image/jpeg', 'image/png', 'image/gif'].includes(fileInput.files[0].type)) {
                 alert('请选择图片文件（JPEG, PNG, GIF）');
                 return false;
             }
 
+            console.log('Price:', price);
+            console.log('Sales:', sales);
+            console.log('Stock:', stock);
             // 验证价格
             if (!/^\d*\.?\d*$/.test(price)) {
                 alert('非法输入');
@@ -147,10 +142,10 @@
 
                         <!-- Single Wedge Start -->
                         <div class="header-bottom-set dropdown">
-                            <a href="#">家居管理</a>
+                            <a href="furn_manage.jsp">家居管理</a>
                         </div>
                         <div class="header-bottom-set dropdown">
-                            <a href="#">订单管理</a>
+                            <a href="order.jsp">订单管理</a>
                         </div>
                     </div>
                 </div>
@@ -209,13 +204,13 @@
                                 </td>
                                 <td class="product-name"><input name="name" id="furnitureName" style="width: 60%"
                                                                 type="text"/></td>
-                                <td class="product-name"><input name="maker" style="width: 90%" type="text"/></td>
-                                <td class="product-price-cart"><input name="price" style="width: 90%" type="text"/></td>
+                                <td class="product-name"><input name="maker"  style="width: 90%" type="text"/></td>
+                                <td class="product-price-cart"><input name="price" id="priceInput" style="width: 90%" type="text"/></td>
                                 <td class="product-quantity">
-                                    <input name="sales" style="width: 90%" type="text"/>
+                                    <input name="sales" id="salesInput" style="width: 90%" type="text"/>
                                 </td>
                                 <td class="product-quantity">
-                                    <input name="stock" style="width: 90%" type="text"/>
+                                    <input name="stock" id="stockInput" style="width: 90%" type="text"/>
                                 </td>
                                 <td>
                                     <!--                                    <a href="#"><i class="icon-pencil"></i></a>-->

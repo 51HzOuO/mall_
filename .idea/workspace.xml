@@ -9,43 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ff93bf5-93ce-4e24-93ad-a22a2f1e4ce8" name="Changes" comment="sync data :: furn_manage furn_update | furn add">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_4_27_下午_4_04_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_4_27_下午_5_32_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_5_2__5_17__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_5_2_下午_5_17_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_5_2__5_17__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_5_2_下午_5_17_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/beans/Furn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/services__C/FurnService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/services__C/impl/FurnServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/services__C/impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/BasicServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/dirext/ManageLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/dirext/ManageMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/filter/ManageLoginFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/filter/ManageMenuFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/filter/MultiLoginFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/template/ManageServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/template/UserServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/jquery-3.7.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/furn_add.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/furn_manage.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/furn_update.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/manage_login.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/manage_menu.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/order.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/order_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_4_25__7_59__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_4_27__5_32__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_4_25_下午_7_59_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_4_25__7_18__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_4_25__7_31__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_4_25__7_44__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_4_25_下午_7_18_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_4_25_下午_7_31_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_4_25_下午_7_44_[Changes]/shelved.patch" beforeDir="false" />
+    <list default="true" id="4ff93bf5-93ce-4e24-93ad-a22a2f1e4ce8" name="Changes" comment="fix img remove  now will delete older">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/template/ManageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/template/ManageServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/manage/furn_manage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/furn_manage.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,6 +247,15 @@
       <workItem from="1714645377195" duration="2437000" />
       <workItem from="1714700082006" duration="1674000" />
       <workItem from="1714704245756" duration="13308000" />
+      <workItem from="1714788263198" duration="2711000" />
+      <workItem from="1714878190135" duration="77000" />
+      <workItem from="1714878288060" duration="16000" />
+      <workItem from="1714878312205" duration="4424000" />
+      <workItem from="1714883311151" duration="29000" />
+      <workItem from="1714889116156" duration="869000" />
+      <workItem from="1714896151664" duration="11772000" />
+      <workItem from="1714974868381" duration="783000" />
+      <workItem from="1714981435526" duration="6268000" />
     </task>
     <task id="LOCAL-00001" summary="add: front verification">
       <option name="closed" value="true" />
@@ -313,7 +289,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714734358392</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix img remove  now will delete older">
+      <option name="closed" value="true" />
+      <created>1714906651476</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1714906651476</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,7 +333,8 @@
     <MESSAGE value="add: RegisterVerify" />
     <MESSAGE value="add: RegisterVerify" />
     <MESSAGE value="sync data :: furn_manage furn_update | furn add" />
-    <option name="LAST_COMMIT_MESSAGE" value="sync data :: furn_manage furn_update | furn add" />
+    <MESSAGE value="fix img remove  now will delete older" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix img remove  now will delete older" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
@@ -359,7 +344,8 @@
     </pin-to-top-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
-        <watch expression="req.getParameter(&quot;action&quot;)" language="JAVA" />
+        <watch expression="ServletInitListener.contextPath + path" />
+        <watch expression="new File(ServletInitListener.contextPath + path).delete()" />
       </configuration>
     </watches-manager>
   </component>

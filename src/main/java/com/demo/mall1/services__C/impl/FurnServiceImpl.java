@@ -3,9 +3,11 @@ package com.demo.mall1.services__C.impl;
 import com.demo.mall1.beans.Furn;
 import com.demo.mall1.services__C.FurnService;
 import com.demo.mall1.utils.GetQueryRunner;
+import com.demo.mall1.web__V.listener.ServletInitListener;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -42,7 +44,19 @@ public class FurnServiceImpl implements FurnService {
     @Override
     public Furn queryFurnById(int id) {
         try {
-            return GetQueryRunner.getQueryRunner().query("select * from furniture where id = ?", new BeanHandler<>(Furn.class), id);
+            return GetQueryRunner.getQueryRunner().query("select id , img_path path , name , merchant , price , sales , total from furniture where id = ?", new BeanHandler<>(Furn.class), id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean deleteFurn(String id) {
+        try {
+            Furn furn = queryFurnById(Integer.parseInt(id));
+            String path = furn.getPath();
+            new File(ServletInitListener.contextPath + path).delete();
+            return GetQueryRunner.getQueryRunner().update("delete from furniture where id = ?", id) == 1;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
+import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -35,9 +36,14 @@ public class ManageServlet extends BasicServlet {
                 continue;
             }
             if (part.getSubmittedFileName().startsWith(name)) {
-                path = "assets/images/product-image/" + part.getSubmittedFileName();
-                part.write(req.getServletContext().getRealPath("/assets/images/product-image/" + part.getSubmittedFileName()));
-
+                String temp = "assets/images/product-image/";
+                String prePath = req.getServletContext().getRealPath("/assets/images/product-image/");
+                while (new File(prePath + part.getSubmittedFileName()).exists()) {
+                    prePath = prePath + "1";
+                    temp = temp + "1";
+                }
+                path = temp + part.getSubmittedFileName();
+                part.write(prePath + part.getSubmittedFileName());
                 break;
             }
         }
@@ -49,7 +55,7 @@ public class ManageServlet extends BasicServlet {
         resp.getWriter().write("添加成功");
     }
 
-    public void updateFurn(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void updateFurn(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String id = req.getParameter("id");
         String name = req.getParameter("name");
         String price = req.getParameter("price");
@@ -57,35 +63,60 @@ public class ManageServlet extends BasicServlet {
         String sales = req.getParameter("sales");
         String stock = req.getParameter("stock");
 
-        Collection<Part> parts = null;
-        try {
-            parts = req.getParts();
-        } catch (IOException | ServletException e) {
-            e.printStackTrace();
-        }
+        // Parse the sales and stock to remove decimals
+        sales = sales.split("\\.")[0];
+        stock = stock.split("\\.")[0];
 
-        if (furnService.queryFurnById(Integer.parseInt(id)) == null) {
+        Collection<Part> parts = req.getParts();
+
+        Furn existingFurn = furnService.queryFurnById(Integer.parseInt(id));
+        if (existingFurn == null) {
             resp.getWriter().write("商品不存在");
             return;
         }
 
+        String existingPath = existingFurn.getPath(); // Get existing file path
+        File fileToDelete = new File(req.getServletContext().getRealPath(existingPath));
 
-        String path = null;
+        String newPath = null;
         for (Part part : parts) {
             if (part.getSubmittedFileName() == null) {
                 continue;
             }
             if (part.getSubmittedFileName().startsWith(name)) {
-                path = "assets/images/product-image/" + part.getSubmittedFileName();
-                try {
-                    part.write(req.getServletContext().getRealPath("/assets/images/product-image/" + part.getSubmittedFileName()));
-                } catch (IOException e) {
-                    e.printStackTrace();
+                String temp = "assets/images/product-image/";
+                String prePath = req.getServletContext().getRealPath("/assets/images/product-image/");
+                while (new File(prePath + part.getSubmittedFileName()).exists()) {
+                    prePath += "1"; // Add "1" to the path
+                    temp += "1";    // and temp to make a new unique path
                 }
+                newPath = temp + part.getSubmittedFileName();
+                part.write(prePath + part.getSubmittedFileName());
                 break;
             }
         }
-        Furn furn = new Furn(Integer.parseInt(id), path, name, maker, new BigDecimal(price), Integer.parseInt(sales), Integer.parseInt(stock));
-        resp.getWriter().write(furnService.updateFurn(furn) ? "修改成功" : "修改失败");
+
+        // Delete the old file if a new file has been uploaded
+        if (newPath != null && fileToDelete.exists()) {
+            fileToDelete.delete();
+        }
+
+        // If no new image is uploaded, retain the old image
+        if (newPath == null) {
+            newPath = existingPath;
+        }
+
+        Furn updatedFurn = new Furn(Integer.parseInt(id), newPath, name, maker, new BigDecimal(price), Integer.parseInt(sales), Integer.parseInt(stock));
+        boolean updateStatus = furnService.updateFurn(updatedFurn);
+        resp.getWriter().write(updateStatus ? "修改成功" : "修改失败");
+    }
+
+
+    public void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        if (furnService.deleteFurn(req.getParameter("id"))) {
+            resp.getWriter().write("删除成功");
+        } else {
+            resp.getWriter().write("删除失败");
+        }
     }
 }
