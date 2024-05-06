@@ -9,8 +9,11 @@ import java.util.HashMap;
 
 @WebListener
 public class ServletInitListener implements ServletContextListener {
+    public static String contextPath = "";
+
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+        contextPath = sce.getServletContext().getRealPath("/");
         sce.getServletContext().setAttribute("users", new HashMap<String, User>());
     }
 }

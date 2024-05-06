@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-//@WebFilter(urlPatterns = {"/manage_login", "/manage_menu", "/furn_manage.jsp", "/order.html"})
+//@WebFilter(urlPatterns = {"/manage_login", "/manage_menu", "/furn_manage.jsp", "/order.jsp"})
 @WebFilter(urlPatterns = {"/views/manage/*"})
 public class ManageLoginFilter extends HttpFilter {
     @Override

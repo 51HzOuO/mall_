@@ -3,6 +3,8 @@
 <%@ page import="com.demo.mall1.services__C.impl.FurnServiceImpl" %>
 <%@ page import="com.demo.mall1.beans.Furn" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.demo.mall1.utils.GetQueryRunner" %>
+<%@ page import="org.apache.commons.dbutils.handlers.BeanHandler" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +17,49 @@
     <link rel="stylesheet" href="assets/css/vendor/vendor.min.css"/>
     <link rel="stylesheet" href="assets/css/plugins/plugins.min.css"/>
     <link rel="stylesheet" href="assets/css/style.min.css">
+    <%--导入jquery--%>
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            // 注意我们在这里使用了类选择器 `.close` 而不是 ID 选择器 `#close`，因为可能有多个 close 按钮
+            $(".close").click(function (e) {
+                e.preventDefault(); // 阻止链接默认的跳转行为
+
+                var productId = $(this).parent().siblings().eq(0).text().trim();
+                var productName = $(this).parent().siblings().eq(2).text().trim();
+                //弹窗确认
+                if (confirm('确定删除\nid = ' + productId + "\nname = " + productName + ' 吗？')) {
+                    // 使用 jQuery 发送 POST 请求
+                    $.post('manage', {
+                        action: 'delete',
+                        id: productId
+                    }, function (data) {
+                        alert(data);
+                        location.reload();
+                    }).fail(function (xhr, status, error) {
+                        alert('删除失败' + error);
+                        location.reload();
+                    });
+                }
+            });
+            $("a.pencil").click(function (e) {
+                e.preventDefault(); // 阻止链接默认的跳转行为
+                var productId = $(this).parent().siblings().eq(0).text().trim();
+                $.ajax({
+                    url: 'manage',
+                    type: 'post',
+                    data: {
+                        action: 'update',
+                        id: productId
+                    },
+                    success: function (data) {
+                        location.href = 'views/manage/furn_update.jsp';
+                    }
+                });
+            });
+        });
+
+    </script>
 
 </head>
 
@@ -49,7 +94,10 @@
                         </div>
                         <!-- Single Wedge Start -->
                         <div class="header-bottom-set dropdown">
-                            <a href="#">后台管理</a>
+                            <a href="views/manage/furn_add.jsp">添加家居</a>
+                        </div>
+                        <div class="header-bottom-set dropdown">
+                            <a href="views/manage/furn_update.jsp">修改家居</a>
                         </div>
                     </div>
                 </div>
@@ -111,7 +159,7 @@
                                     <a href="#"><img class="img-responsive ml-3" src="<%=furn.getPath()%>"
                                                      alt=""/></a>
                                 </td>
-                                <td class="product-name"><a href="#"><%=furn.getName()%>
+                                <td class="product-name"><a href="#" class="product--name"><%=furn.getName()%>
                                 </a></td>
                                 <td class="product-name"><a href="#"><%=furn.getMerchant()%>
                                 </a></td>
@@ -125,8 +173,9 @@
                                     <%=furn.getTotal() - furn.getSales()%>
                                 </td>
                                 <td class="product-remove">
-                                    <a id="pencil" href="views/manage/furn_update.jsp"><i class="icon-pencil"></i></a>
-                                    <a id="close"><i class="icon-close"></i></a>
+                                    <a class="pencil" href="views/manage/furn_update.jsp"><i
+                                            class="icon-pencil"></i></a>
+                                    <a class="close"><i class="icon-close"></i></a>
                                 </td>
                             </tr>
                             <%

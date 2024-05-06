@@ -47,7 +47,7 @@
                             <a href="views/member/login.jsp">登录|注册</a>
                         </div>
                         <div class="header-bottom-set dropdown">
-                            <a href="#">后台管理</a>
+                            <a href="manage_login">后台管理</a>
                         </div>
                         <!-- Single Wedge End -->
                         <a href="#offcanvas-cart"

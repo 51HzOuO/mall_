@@ -12,4 +12,6 @@ public interface FurnService {
     boolean updateFurn(Furn furn);
 
     Furn queryFurnById(int id);
+
+    boolean deleteFurn(String id);
 }
