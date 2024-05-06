@@ -13,6 +13,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/template/ManageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/template/ManageServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/manage/furn_manage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/furn_manage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/manage/furn_update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/furn_update.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +41,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
+    <option name="RESET_MODE" value="SOFT" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -255,7 +256,7 @@
       <workItem from="1714889116156" duration="869000" />
       <workItem from="1714896151664" duration="11772000" />
       <workItem from="1714974868381" duration="783000" />
-      <workItem from="1714981435526" duration="6268000" />
+      <workItem from="1714981435526" duration="8321000" />
     </task>
     <task id="LOCAL-00001" summary="add: front verification">
       <option name="closed" value="true" />
@@ -297,7 +298,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714906651476</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix img remove  now will delete older">
+      <option name="closed" value="true" />
+      <created>1714996262193</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1714996262193</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix img remove  now will delete older">
+      <option name="closed" value="true" />
+      <created>1714996287282</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1714996287282</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,11 +359,5 @@
         <PinnedItemInfo parentTag="com.demo.mall1.beans.Furn" memberName="price" />
       </pinned-members>
     </pin-to-top-manager>
-    <watches-manager>
-      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
-        <watch expression="ServletInitListener.contextPath + path" />
-        <watch expression="new File(ServletInitListener.contextPath + path).delete()" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

@@ -3,6 +3,8 @@
 <%@ page import="com.demo.mall1.services__C.impl.FurnServiceImpl" %>
 <%@ page import="com.demo.mall1.beans.Furn" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.demo.mall1.utils.GetQueryRunner" %>
+<%@ page import="org.apache.commons.dbutils.handlers.BeanHandler" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +41,21 @@
                         location.reload();
                     });
                 }
-
+            });
+            $("a.pencil").click(function (e) {
+                e.preventDefault(); // 阻止链接默认的跳转行为
+                var productId = $(this).parent().siblings().eq(0).text().trim();
+                $.ajax({
+                    url: 'manage',
+                    type: 'post',
+                    data: {
+                        action: 'update',
+                        id: productId
+                    },
+                    success: function (data) {
+                        location.href = 'views/manage/furn_update.jsp';
+                    }
+                });
             });
         });
 

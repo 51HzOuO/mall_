@@ -55,6 +55,12 @@ public class ManageServlet extends BasicServlet {
         resp.getWriter().write("添加成功");
     }
 
+    public void update(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String id = req.getParameter("id");
+        Furn furn = furnService.queryFurnById(Integer.parseInt(id));
+        req.getSession().setAttribute("furn", furn);
+    }
+
     public void updateFurn(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String id = req.getParameter("id");
         String name = req.getParameter("name");
