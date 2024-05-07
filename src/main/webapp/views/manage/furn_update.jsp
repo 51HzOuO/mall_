@@ -1,3 +1,4 @@
+<%@ page import="com.demo.mall1.beans.Furn" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
@@ -113,10 +114,6 @@
                     processData: false, // 告诉 jQuery 不处理发送的数据
                     contentType: false, // 告诉 jQuery 不设置内容类型头
                     success: function (response) {
-
-                        <%
-                        session.removeAttribute("furn");
-                        %>
                         alert(response);
                         location.href = '<%=request.getContextPath()%>/views/manage/furn_manage.jsp';
                     },
@@ -212,7 +209,8 @@
                                     <input name="id" id="idInput" style="width: 90%" type="text" value="${furn.id}"/>
                                 </td>
                                 <td class="product-thumbnail">
-                                    <img src="../../${furn.path}" id="img-preview"
+                                    <img src="../../<%=session.getAttribute("furn") == null ?  "assets/images/product-image/default.jpg": "" %>${furn.path}"
+                                         id="img-preview"
                                          class="img-responsive ml-3">
                                     <input type="file" name="imagefile" id="fileInput" class="input-file"
                                            onchange="previewFile(this);">

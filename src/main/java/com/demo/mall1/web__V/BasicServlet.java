@@ -9,6 +9,12 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 public abstract class BasicServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
+    }
+
     @Override
     protected final void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {

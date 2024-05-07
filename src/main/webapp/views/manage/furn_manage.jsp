@@ -97,7 +97,7 @@
                             <a href="views/manage/furn_add.jsp">添加家居</a>
                         </div>
                         <div class="header-bottom-set dropdown">
-                            <a href="views/manage/furn_update.jsp">修改家居</a>
+                            <a href="manage?action=update">修改家居</a>
                         </div>
                     </div>
                 </div>
