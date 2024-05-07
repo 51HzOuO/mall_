@@ -57,7 +57,7 @@
                 <div class="login-register-wrapper">
                     <div class="login-register-tab-list nav">
                         <a class="active"  href="index.jsp">
-                            <h4>登录成功, 返回首页</h4>
+                            <h4>注册成功, 返回首页</h4>
                         </a>
                     </div>
                 </div>
@@ -103,10 +103,10 @@
                                     <ul class="align-items-center">
                                         <li class="li"><a class="single-link" href="my-account.html">我的账号</a>
                                         </li>
-                                        <li class="li"><a class="single-link" href="cart.html">我的购物车</a></li>
+                                        <li class="li"><a class="single-link" href="cart.jsp">我的购物车</a></li>
                                         <li class="li"><a class="single-link" href="login.html">登录</a></li>
                                         <li class="li"><a class="single-link" href="wishlist.html">感兴趣的</a></li>
-                                        <li class="li"><a class="single-link" href="checkout.html">结账</a></li>
+                                        <li class="li"><a class="single-link" href="checkout.jsp">结账</a></li>
                                     </ul>
                                 </div>
                             </div>

@@ -362,11 +362,11 @@
                                     <ul class="align-items-center">
                                         <li class="li"><a class="single-link" href="my-account.html">我的账号</a>
                                         </li>
-                                        <li class="li"><a class="single-link" href="cart.html">我的购物车</a></li>
+                                        <li class="li"><a class="single-link" href="cart.jsp">我的购物车</a></li>
                                         <li class="li"><a class="single-link" href="views/member/login">登录</a>
                                         </li>
                                         <li class="li"><a class="single-link" href="wishlist.html">感兴趣的</a></li>
-                                        <li class="li"><a class="single-link" href="checkout.html">结账</a></li>
+                                        <li class="li"><a class="single-link" href="checkout.jsp">结账</a></li>
                                     </ul>
                                 </div>
                             </div>

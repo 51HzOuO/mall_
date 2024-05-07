@@ -1,11 +1,14 @@
 package com.demo.mall1.services__C.impl;
 
 import com.demo.mall1.beans.Furn;
+import com.demo.mall1.beans.Page;
 import com.demo.mall1.services__C.FurnService;
 import com.demo.mall1.utils.GetQueryRunner;
 import com.demo.mall1.web__V.listener.ServletInitListener;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
+import org.junit.Test;
 
 import java.io.File;
 import java.sql.SQLException;
@@ -24,7 +27,6 @@ public class FurnServiceImpl implements FurnService {
     @Override
     public void addFurn(Furn furn) {
         try {
-//            GetQueryRunner.getQueryRunner().execute("insert into furniture (img_path, name, merchant, price, sales, total) VALUES (?,?,?,?,?,?)", furn.getPath(), furn.getName(), furn.getMerchant(), furn.getPrice(), furn.getSales(), furn.getTotal());
             GetQueryRunner.getQueryRunner().execute("insert into furniture values(null,?,?,?,?,?,?)", furn.getPath(), furn.getName(), furn.getMerchant(), furn.getPrice(), furn.getSales(), furn.getTotal());
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -62,5 +64,29 @@ public class FurnServiceImpl implements FurnService {
         }
     }
 
+    @Override
+    public Page<Furn> queryFurnByPage(int pageNo, int pageSize) {
+        Page<Furn> furnPage = new Page<>();
+        furnPage.setPageNo(pageNo);
+        furnPage.setPageSize(pageSize);
+        try {
+            furnPage.setTotalRow((int) (long) GetQueryRunner.getQueryRunner().query("select count(*) from furniture", new ScalarHandler<>()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        furnPage.setMaxPage((int) Math.ceil((double) furnPage.getTotalRow() / pageSize));
+        try {
+            furnPage.setItems(GetQueryRunner.getQueryRunner().query("select id , img_path path , name , merchant , price , sales , total from furniture limit ?,?", new BeanListHandler<>(Furn.class), (pageNo - 1) * pageSize, pageSize));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return furnPage;
+    }
+
+    @Test
+    public void test() {
+        Page<Furn> furnPage = queryFurnByPage(1, 1);
+        System.out.println(furnPage.getTotalRow());
+    }
 
 }

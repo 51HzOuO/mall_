@@ -1,10 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.demo.mall1.services__C.FurnService" %>
-<%@ page import="com.demo.mall1.services__C.impl.FurnServiceImpl" %>
 <%@ page import="com.demo.mall1.beans.Furn" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.demo.mall1.utils.GetQueryRunner" %>
-<%@ page import="org.apache.commons.dbutils.handlers.BeanHandler" %>
+<%@ page import="com.demo.mall1.beans.Page" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -147,9 +143,14 @@
                             </thead>
                             <tbody>
                             <%
-                                FurnService furnService = new FurnServiceImpl();
-                                List<Furn> furns = furnService.queryAllFurn();
-                                for (Furn furn : furns) {
+                                Page<Furn> furnInfo = (Page<Furn>) session.getAttribute("page");
+                                if (furnInfo == null) {
+                                    response.sendRedirect(request.getContextPath() + "/manage?action=listFurn&page=1");
+                                    return;
+                                }
+                            %>
+                            <%
+                                for (Furn furn : furnInfo.getItems()) {
                             %>
                             <tr>
                                 <td>
@@ -185,6 +186,28 @@
                         </table>
                     </div>
                 </form>
+            </div>
+            <div class="pro-pagination-style text-center mb-md-30px mb-lm-30px mt-6" data-aos="fade-up">
+                <ul>
+                    <li><a href="manage?action=listFurn&page=1">首页</a></li>
+                    <%if ((furnInfo.getPageNo() - 1) != 0) {%>
+                    <li><a href="manage?action=listFurn&page=<%=furnInfo.getPageNo()-1%>">上页</a></li>
+                    <li>
+                        <a href="manage?action=listFurn&page=<%=furnInfo.getPageNo()-1%>"><%=furnInfo.getPageNo() - 1%>
+                        </a></li>
+                    <%}%>
+                    <li><a class="active"><%=furnInfo.getPageNo()%>
+                    </a></li>
+                    <%if (furnInfo.getPageNo() != furnInfo.getMaxPage()) {%>
+                    <li>
+                        <a href="manage?action=listFurn&page=<%=furnInfo.getPageNo() +1%>"><%=furnInfo.getPageNo() + 1%>
+                        </a></li>
+                    <li><a href="manage?action=listFurn&page=<%=furnInfo.getPageNo() +1%>">下页</a></li>
+                    <%}%>
+                    <li><a href="manage?action=listFurn&page=<%=furnInfo.getMaxPage()%>">末页</a></li>
+                    <li><a>共<%=furnInfo.getMaxPage()%>页</a></li>
+                    <li><a>共<%=furnInfo.getTotalRow()%>记录</a></li>
+                </ul>
             </div>
         </div>
     </div>

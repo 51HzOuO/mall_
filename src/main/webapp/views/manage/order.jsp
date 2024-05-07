@@ -52,7 +52,8 @@
                 <!-- Header Logo Start -->
                 <div class="col-auto align-self-center">
                     <div class="header-logo">
-                        <a href="../../index.jsp"><img width="280px" src="../../assets/images/logo/logo.png" alt="Site Logo"/></a>
+                        <a href="../../index.jsp"><img width="280px" src="../../assets/images/logo/logo.png"
+                                                       alt="Site Logo"/></a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -74,7 +75,7 @@
                         <table>
                             <thead>
                             <tr>
-				<th>订单</th>
+                                <th>订单</th>
                                 <th>日期</th>
                                 <th>金额</th>
                                 <th>状态</th>
@@ -83,7 +84,7 @@
                             </thead>
                             <tbody>
                             <tr>
-				<td class="product-name">16248893425621</td>
+                                <td class="product-name">16248893425621</td>
                                 <td class="product-name">2100-12-12 22:10:10</td>
                                 <td class="product-price-cart"><span class="amount">160.00</span></td>
                                 <td class="product-name"><a href="#">未发货</a></td>
@@ -119,7 +120,8 @@
                                     <ul class="align-items-center">
                                         <li class="li"><a class="single-link" href="about.html">关于我们</a></li>
                                         <li class="li"><a class="single-link" href="#">交货信息</a></li>
-                                        <li class="li"><a class="single-link" href="privacy-policy.html">隐私与政策</a></li>
+                                        <li class="li"><a class="single-link" href="privacy-policy.html">隐私与政策</a>
+                                        </li>
                                         <li class="li"><a class="single-link" href="#">条款和条件</a></li>
                                         <li class="li"><a class="single-link" href="#">制造</a></li>
                                     </ul>
@@ -137,10 +139,10 @@
                                     <ul class="align-items-center">
                                         <li class="li"><a class="single-link" href="my-account.html">我的账号</a>
                                         </li>
-                                        <li class="li"><a class="single-link" href="../../cart.html">我的购物车</a></li>
+                                        <li class="li"><a class="single-link" href="../../cart.jsp">我的购物车</a></li>
                                         <li class="li"><a class="single-link" href="login.html">登录</a></li>
                                         <li class="li"><a class="single-link" href="wishlist.html">感兴趣的</a></li>
-                                        <li class="li"><a class="single-link" href="../../checkout.html">结账</a></li>
+                                        <li class="li"><a class="single-link" href="../../checkout.jsp">结账</a></li>
                                     </ul>
                                 </div>
                             </div>

@@ -27,19 +27,6 @@
                 </div>
                 <!-- Header Logo End -->
                 <!-- Header Action Start -->
-                <div class="col align-self-center">
-                    <div class="header-actions">
-                        <div class="header-bottom-set dropdown">
-                            <a>欢迎: hello</a>
-                        </div>
-                        <div class="header-bottom-set dropdown">
-                            <a href="#">订单管理</a>
-                        </div>
-                        <div class="header-bottom-set dropdown">
-                            <a href="memberServlet?action=logout">安全退出</a>
-                        </div>
-                    </div>
-                </div>
                 <!-- Header Action End -->
             </div>
         </div>
@@ -72,7 +59,7 @@
                 <div class="login-register-wrapper">
                     <div class="login-register-tab-list nav">
                         <a class="active" href="index.jsp">
-                            <h4>订单已结算, 订单号-hello</h4>
+                            <h4 style="color: darkblue">您访问的页面不存在 返回首页</h4>
                         </a>
                     </div>
                 </div>
@@ -118,10 +105,10 @@
                                     <ul class="align-items-center">
                                         <li class="li"><a class="single-link" href="my-account.html">我的账号</a>
                                         </li>
-                                        <li class="li"><a class="single-link" href="cart.html">我的购物车</a></li>
+                                        <li class="li"><a class="single-link" href="cart.jsp">我的购物车</a></li>
                                         <li class="li"><a class="single-link" href="login.html">登录</a></li>
                                         <li class="li"><a class="single-link" href="wishlist.html">感兴趣的</a></li>
-                                        <li class="li"><a class="single-link" href="checkout.html">结账</a></li>
+                                        <li class="li"><a class="single-link" href="checkout.jsp">结账</a></li>
                                     </ul>
                                 </div>
                             </div>

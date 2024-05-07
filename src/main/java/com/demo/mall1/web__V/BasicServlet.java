@@ -23,8 +23,8 @@ public abstract class BasicServlet extends HttpServlet {
             // 子类只需要写 'action' 方法即可
             // 例如: public void login(HttpServletRequest req, HttpServletResponse resp) {}
             this.getClass().getDeclaredMethod(req.getParameter("action"), HttpServletRequest.class, HttpServletResponse.class).invoke(this, req, resp);
-        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            throw new RuntimeException(e);
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | NullPointerException e) {
+            resp.sendRedirect("404.jsp");
         }
     }
 }
