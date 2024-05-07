@@ -57,6 +57,11 @@ public class ManageServlet extends BasicServlet {
 
     public void update(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String id = req.getParameter("id");
+        if (id == null) {
+            req.getSession().removeAttribute("furn");
+            resp.sendRedirect("views/manage/furn_update.jsp");
+            return;
+        }
         Furn furn = furnService.queryFurnById(Integer.parseInt(id));
         req.getSession().setAttribute("furn", furn);
     }
@@ -111,6 +116,8 @@ public class ManageServlet extends BasicServlet {
         if (newPath == null) {
             newPath = existingPath;
         }
+
+        req.getSession().removeAttribute("furn");
 
         Furn updatedFurn = new Furn(Integer.parseInt(id), newPath, name, maker, new BigDecimal(price), Integer.parseInt(sales), Integer.parseInt(stock));
         boolean updateStatus = furnService.updateFurn(updatedFurn);

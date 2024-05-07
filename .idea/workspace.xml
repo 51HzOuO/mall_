@@ -10,7 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ff93bf5-93ce-4e24-93ad-a22a2f1e4ce8" name="Changes" comment="fix img remove  now will delete older">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/BasicServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/BasicServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/filter/ManageMenuFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/filter/ManageMenuFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/filter/MultiLoginFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/filter/MultiLoginFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/template/ManageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/mall1/web__V/template/ManageServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/manage/furn_manage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/furn_manage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/manage/furn_update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/manage/furn_update.jsp" afterDir="false" />
@@ -257,6 +261,7 @@
       <workItem from="1714896151664" duration="11772000" />
       <workItem from="1714974868381" duration="783000" />
       <workItem from="1714981435526" duration="8321000" />
+      <workItem from="1715046327536" duration="7561000" />
     </task>
     <task id="LOCAL-00001" summary="add: front verification">
       <option name="closed" value="true" />
@@ -359,5 +364,10 @@
         <PinnedItemInfo parentTag="com.demo.mall1.beans.Furn" memberName="price" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="session.getAttribute(&quot;furn&quot;)" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
