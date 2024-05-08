@@ -1,6 +1,7 @@
 package com.demo.mall1.services__C;
 
 import com.demo.mall1.beans.Furn;
+import com.demo.mall1.beans.Page;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface FurnService {
     Furn queryFurnById(int id);
 
     boolean deleteFurn(String id);
+
+    Page<Furn> queryFurnByPage(int pageNo, int pageSize);
 }

@@ -22,6 +22,13 @@ public class ManageServlet extends BasicServlet {
     public static final ThreadLocal<Object> returnInfo = new ThreadLocal<>();
     private final FurnService furnService = new FurnServiceImpl();
 
+    public void listFurn(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        int pageNo = Integer.parseInt(req.getParameter("page"));
+        int pageSize = 5;
+        req.getSession().setAttribute("page", furnService.queryFurnByPage(pageNo, pageSize));
+        resp.sendRedirect("views/manage/furn_manage.jsp");
+    }
+
     public void addFurn(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String price = req.getParameter("price");

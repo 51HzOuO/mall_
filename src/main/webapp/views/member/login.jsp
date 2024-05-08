@@ -91,7 +91,7 @@
                     success: function (data) {
                         //重定向到login_ok.html
                         if (data === "ok")
-                            window.location.href = "../../login_ok.html";
+                            window.location.href = "../../login_ok.jsp";
                         else {
                             $(".errorMsg1").text(data).css("color", "red");
                             $("#login-password").val("");

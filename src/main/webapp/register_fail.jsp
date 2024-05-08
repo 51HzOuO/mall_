@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-    <title>韩顺平教育-家居网购</title>
+    <title>韩顺平教育-家居网购~</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link rel="stylesheet" href="assets/css/vendor/vendor.min.css"/>
     <link rel="stylesheet" href="assets/css/plugins/plugins.min.css"/>
@@ -26,8 +26,6 @@
                     </div>
                 </div>
                 <!-- Header Logo End -->
-                <!-- Header Action Start -->
-                <!-- Header Action End -->
             </div>
         </div>
     </div>
@@ -58,8 +56,8 @@
             <div class="col-lg-7 col-md-12 ml-auto mr-auto">
                 <div class="login-register-wrapper">
                     <div class="login-register-tab-list nav">
-                        <a class="active" href="index.jsp">
-                            <h4 style="color: darkblue">sorry，您访问的页面出现了错误 返回首页</h4>
+                        <a class="active"  href="login.html">
+                            <h4>注册失败, 重新注册</h4>
                         </a>
                     </div>
                 </div>
@@ -105,10 +103,10 @@
                                     <ul class="align-items-center">
                                         <li class="li"><a class="single-link" href="my-account.html">我的账号</a>
                                         </li>
-                                        <li class="li"><a class="single-link" href="cart.html">我的购物车</a></li>
+                                        <li class="li"><a class="single-link" href="cart.jsp">我的购物车</a></li>
                                         <li class="li"><a class="single-link" href="login.html">登录</a></li>
                                         <li class="li"><a class="single-link" href="wishlist.html">感兴趣的</a></li>
-                                        <li class="li"><a class="single-link" href="checkout.html">结账</a></li>
+                                        <li class="li"><a class="single-link" href="checkout.jsp">结账</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -132,7 +130,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 text-left">
-                        <p class="copy-text">Copyright &copy; 2021 韩顺平教育</p>
+                        <p class="copy-text">Copyright &copy; 2021 韩顺平教育~</p>
                     </div>
                 </div>
             </div>

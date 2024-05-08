@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
@@ -9,8 +8,8 @@
     <link rel="stylesheet" href="assets/css/vendor/vendor.min.css"/>
     <link rel="stylesheet" href="assets/css/plugins/plugins.min.css"/>
     <link rel="stylesheet" href="assets/css/style.min.css"/>
-</head>
 
+</head>
 <body>
 <!-- Header Area start  -->
 <div class="header section">
@@ -27,21 +26,6 @@
                     </div>
                 </div>
                 <!-- Header Logo End -->
-                <!-- Header Action Start -->
-                <div class="col align-self-center">
-                    <div class="header-actions">
-                        <div class="header-bottom-set dropdown">
-                            <a>欢迎: hello</a>
-                        </div>
-                        <div class="header-bottom-set dropdown">
-                            <a href="#">订单管理</a>
-                        </div>
-                        <div class="header-bottom-set dropdown">
-                            <a href="#">安全退出</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Header Action End -->
             </div>
         </div>
     </div>
@@ -65,82 +49,23 @@
     <!-- Main Menu End -->
 </div>
 <!-- Header Area End  -->
-
-<!-- OffCanvas Cart Start -->
-
-<!-- OffCanvas Cart End -->
-
-<!-- OffCanvas Menu Start -->
-
-<!-- OffCanvas Menu End -->
-
-
-<!-- breadcrumb-area start -->
-
-
-<!-- breadcrumb-area end -->
-
-<!-- Cart Area Start -->
-<div class="cart-main-area pt-100px pb-100px">
+<!-- login area start -->
+<div class="login-register-area pt-70px pb-100px">
     <div class="container">
-        <h3 class="cart-page-title">Your cart items</h3>
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                <form action="#">
-                    <div class="table-content table-responsive cart-table-content">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>图片</th>
-                                <th>家居名</th>
-                                <th>单价</th>
-                                <th>数量</th>
-                                <th>金额</th>
-                                <th>操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="product-thumbnail">
-                                    <a href="#"><img class="img-responsive ml-3" src="assets/images/product-image/1.jpg"
-                                                     alt=""/></a>
-                                </td>
-                                <td class="product-name"><a href="#">Product Name</a></td>
-                                <td class="product-price-cart"><span class="amount">$60.00</span></td>
-                                <td class="product-quantity">
-                                    <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1"/>
-                                    </div>
-                                </td>
-                                <td class="product-subtotal">$70.00</td>
-                                <td class="product-remove">
-                                    <a href="#"><i class="icon-close"></i></a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+            <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                <div class="login-register-wrapper">
+                    <div class="login-register-tab-list nav">
+                        <a class="active"  href="index.jsp">
+                            <h4>登录成功, 返回首页</h4>
+                        </a>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="cart-shiping-update-wrapper">
-                                <h4>共xx件商品 总价 xxxx.xx元</h4>
-                                <div class="cart-shiping-update">
-                                    <a href="#">购 物 车 结 账</a>
-                                </div>
-                                <div class="cart-clear">
-                                    <button>继 续 购 物</button>
-                                    <a href="#">清 空 购 物 车</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
+                </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Cart Area End -->
+<!-- login area end -->
 
 <!-- Footer Area Start -->
 <div class="footer-area">
@@ -178,10 +103,10 @@
                                     <ul class="align-items-center">
                                         <li class="li"><a class="single-link" href="my-account.html">我的账号</a>
                                         </li>
-                                        <li class="li"><a class="single-link" href="cart.html">我的购物车</a></li>
+                                        <li class="li"><a class="single-link" href="cart.jsp">我的购物车</a></li>
                                         <li class="li"><a class="single-link" href="login.html">登录</a></li>
                                         <li class="li"><a class="single-link" href="wishlist.html">感兴趣的</a></li>
-                                        <li class="li"><a class="single-link" href="checkout.html">结账</a></li>
+                                        <li class="li"><a class="single-link" href="checkout.jsp">结账</a></li>
                                     </ul>
                                 </div>
                             </div>
