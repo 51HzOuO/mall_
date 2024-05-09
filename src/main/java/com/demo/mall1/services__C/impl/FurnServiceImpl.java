@@ -8,7 +8,6 @@ import com.demo.mall1.web__V.listener.ServletInitListener;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
-import org.junit.Test;
 
 import java.io.File;
 import java.sql.SQLException;
@@ -82,11 +81,4 @@ public class FurnServiceImpl implements FurnService {
         }
         return furnPage;
     }
-
-    @Test
-    public void test() {
-        Page<Furn> furnPage = queryFurnByPage(1, 1);
-        System.out.println(furnPage.getTotalRow());
-    }
-
 }

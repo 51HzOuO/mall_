@@ -150,7 +150,7 @@
 
                         <!-- Single Wedge Start -->
                         <div class="header-bottom-set dropdown">
-                            <a href="furn_manage.jsp">家居管理</a>
+                            <a href="<%=request.getContextPath() + "/manage?action=listFurn&page=1"%>">家居管理</a>
                         </div>
                         <div class="header-bottom-set dropdown">
                             <a href="order.jsp">订单管理</a>
