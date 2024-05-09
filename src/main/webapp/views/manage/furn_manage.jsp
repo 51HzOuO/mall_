@@ -187,29 +187,63 @@
                     </div>
                 </form>
             </div>
-            <div class="pro-pagination-style text-center mb-md-30px mb-lm-30px mt-6" data-aos="fade-up">
-                <ul>
-                    <li><a href="manage?action=listFurn&page=1">首页</a></li>
-                    <%if ((furnInfo.getPageNo() - 1) != 0) {%>
-                    <li><a href="manage?action=listFurn&page=<%=furnInfo.getPageNo()-1%>">上页</a></li>
-                    <li>
-                        <a href="manage?action=listFurn&page=<%=furnInfo.getPageNo()-1%>"><%=furnInfo.getPageNo() - 1%>
-                        </a></li>
-                    <%}%>
-                    <li><a class="active"><%=furnInfo.getPageNo()%>
-                    </a></li>
-                    <%if (furnInfo.getPageNo() != furnInfo.getMaxPage()) {%>
-                    <li>
-                        <a href="manage?action=listFurn&page=<%=furnInfo.getPageNo() +1%>"><%=furnInfo.getPageNo() + 1%>
-                        </a></li>
-                    <li><a href="manage?action=listFurn&page=<%=furnInfo.getPageNo() +1%>">下页</a></li>
-                    <%}%>
-                    <li><a href="manage?action=listFurn&page=<%=furnInfo.getMaxPage()%>">末页</a></li>
-                    <li><a>共<%=furnInfo.getMaxPage()%>页</a></li>
-                    <li><a>共<%=furnInfo.getTotalRow()%>记录</a></li>
-                </ul>
-            </div>
         </div>
+        <div class="pro-pagination-style text-center mb-md-30px mb-lm-30px mt-6" data-aos="fade-up">
+            <ul>
+                <%
+                    int currentPage = furnInfo.getPageNo();
+                    int maxPages = furnInfo.getMaxPage();
+                    int startPage, endPage;
+
+                    if (maxPages <= 7) {
+                        // 如果总页数不超过7，显示所有页码
+                        startPage = 1;
+                        endPage = maxPages;
+                    } else {
+                        // 根据当前页计算起始页和结束页
+                        if (currentPage <= 5) {
+                            startPage = 1;
+                            endPage = 7;
+                        } else if (currentPage + 3 >= maxPages) {
+                            startPage = maxPages - 6;
+                            endPage = maxPages;
+                        } else {
+                            startPage = currentPage - 3;
+                            endPage = currentPage + 3;
+                        }
+                    }
+                %>
+                <li><a href="manage?action=listFurn&page=<%=Math.max(currentPage - 1, 1)%>">上一页</a></li>
+                <%
+                    if (startPage > 1) {
+                %>
+                <li><a href="manage?action=listFurn&page=1">1</a></li>
+                <li>...</li>
+                <% }
+                    for (int i = startPage; i <= endPage; i++) {
+                        if (i == currentPage) {
+                %>
+                <li><a class="active"><%=i%>
+                </a></li>
+                <% } else {
+                %>
+                <li><a href="manage?action=listFurn&page=<%=i%>"><%=i%>
+                </a></li>
+                <% }
+                }
+                    if (endPage < maxPages) {
+                %>
+                <li>...</li>
+                <li><a href="manage?action=listFurn&page=<%=maxPages%>"><%=maxPages%>
+                </a></li>
+                <% }
+                %>
+                <li><a href="manage?action=listFurn&page=<%=Math.min(currentPage + 1, maxPages)%>">下一页</a>
+                </li>
+                <li><a>共<%=furnInfo.getTotalRow()%>记录</a></li>
+            </ul>
+        </div>
+
     </div>
 </div>
 <!-- Cart Area End -->

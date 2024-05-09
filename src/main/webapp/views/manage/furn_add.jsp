@@ -142,7 +142,7 @@
 
                         <!-- Single Wedge Start -->
                         <div class="header-bottom-set dropdown">
-                            <a href="furn_manage.jsp">家居管理</a>
+                            <a href="<%=request.getContextPath() + "/manage?action=listFurn&page=1"%>">家居管理</a>
                         </div>
                         <div class="header-bottom-set dropdown">
                             <a href="order.jsp">订单管理</a>
@@ -204,8 +204,9 @@
                                 </td>
                                 <td class="product-name"><input name="name" id="furnitureName" style="width: 60%"
                                                                 type="text"/></td>
-                                <td class="product-name"><input name="maker"  style="width: 90%" type="text"/></td>
-                                <td class="product-price-cart"><input name="price" id="priceInput" style="width: 90%" type="text"/></td>
+                                <td class="product-name"><input name="maker" style="width: 90%" type="text"/></td>
+                                <td class="product-price-cart"><input name="price" id="priceInput" style="width: 90%"
+                                                                      type="text"/></td>
                                 <td class="product-quantity">
                                     <input name="sales" id="salesInput" style="width: 90%" type="text"/>
                                 </td>

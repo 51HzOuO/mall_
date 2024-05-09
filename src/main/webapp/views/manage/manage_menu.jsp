@@ -34,7 +34,7 @@
                     <div class="header-actions">
                         <!-- Single Wedge Start -->
                         <div class="header-bottom-set dropdown">
-                            <a href="views/manage/furn_manage.jsp">家居管理</a>
+                            <a href="<%=request.getContextPath() + "/manage?action=listFurn&page=1"%>">家居管理</a>
                         </div>
                         <div class="header-bottom-set dropdown">
                             <a href="views/manage/order.html">订单管理</a>
@@ -88,7 +88,7 @@
                             </td>
                             <td class="product-price-cart"><span class="amount">furn_manage.jsp</span></td>
                             <td class="product-quantity">
-                                <a href="views/manage/furn_manage.jsp">进入</a>
+                                <a href="<%=request.getContextPath() + "/manage?action=listFurn&page=1"%>">进入</a>
                             </td>
                         </tr>
                         <tr>

@@ -1,6 +1,7 @@
 package com.demo.mall1.web__V.template;
 
 import com.demo.mall1.beans.Furn;
+import com.demo.mall1.beans.Page;
 import com.demo.mall1.services__C.FurnService;
 import com.demo.mall1.services__C.impl.FurnServiceImpl;
 import com.demo.mall1.web__V.BasicServlet;
@@ -62,6 +63,7 @@ public class ManageServlet extends BasicServlet {
         resp.getWriter().write("添加成功");
     }
 
+    //跳转到update 页面并 根据id 填充数据
     public void update(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String id = req.getParameter("id");
         if (id == null) {
@@ -128,12 +130,16 @@ public class ManageServlet extends BasicServlet {
 
         Furn updatedFurn = new Furn(Integer.parseInt(id), newPath, name, maker, new BigDecimal(price), Integer.parseInt(sales), Integer.parseInt(stock));
         boolean updateStatus = furnService.updateFurn(updatedFurn);
+        if (updateStatus) {
+            req.getSession().setAttribute("page", furnService.queryFurnByPage(((Page<Furn>) req.getSession().getAttribute("page")).getPageNo(), 5));
+        }
         resp.getWriter().write(updateStatus ? "修改成功" : "修改失败");
     }
 
 
     public void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         if (furnService.deleteFurn(req.getParameter("id"))) {
+            req.getSession().setAttribute("page", furnService.queryFurnByPage(((Page<Furn>) req.getSession().getAttribute("page")).getPageNo(), 5));
             resp.getWriter().write("删除成功");
         } else {
             resp.getWriter().write("删除失败");
