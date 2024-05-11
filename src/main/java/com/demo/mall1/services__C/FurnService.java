@@ -17,4 +17,6 @@ public interface FurnService {
     boolean deleteFurn(String id);
 
     Page<Furn> queryFurnByPage(int pageNo, int pageSize);
+
+    Page<Furn> queryFurnByPage(int pageNo, int pageSize, String key);
 }

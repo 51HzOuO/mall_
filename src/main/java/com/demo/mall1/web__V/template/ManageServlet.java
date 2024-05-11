@@ -136,7 +136,6 @@ public class ManageServlet extends BasicServlet {
         resp.getWriter().write(updateStatus ? "修改成功" : "修改失败");
     }
 
-
     public void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         if (furnService.deleteFurn(req.getParameter("id"))) {
             req.getSession().setAttribute("page", furnService.queryFurnByPage(((Page<Furn>) req.getSession().getAttribute("page")).getPageNo(), 5));

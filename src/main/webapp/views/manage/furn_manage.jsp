@@ -148,8 +148,10 @@
                                     response.sendRedirect(request.getContextPath() + "/manage?action=listFurn&page=1");
                                     return;
                                 }
-                            %>
-                            <%
+                                if (furnInfo.getItems().size() == 0) {
+                                    response.sendRedirect(request.getContextPath() + "/manage?action=listFurn&page=" + (furnInfo.getMaxPage()));
+                                    return;
+                                }
                                 for (Furn furn : furnInfo.getItems()) {
                             %>
                             <tr>
@@ -201,15 +203,15 @@
                         endPage = maxPages;
                     } else {
                         // 根据当前页计算起始页和结束页
-                        if (currentPage <= 5) {
+                        if (currentPage - 4 <= 1) {
                             startPage = 1;
                             endPage = 7;
-                        } else if (currentPage + 3 >= maxPages) {
+                        } else if (currentPage + 4 >= maxPages) {
                             startPage = maxPages - 6;
                             endPage = maxPages;
                         } else {
-                            startPage = currentPage - 3;
-                            endPage = currentPage + 3;
+                            startPage = currentPage - 2;
+                            endPage = currentPage + 2;
                         }
                     }
                 %>
