@@ -1,5 +1,6 @@
+<%@ page import="com.demo.mall1.beans.Furn" %>
+<%@ page import="com.demo.mall1.beans.Page" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,33 @@
     <link rel="stylesheet" href="assets/css/vendor/vendor.min.css"/>
     <link rel="stylesheet" href="assets/css/plugins/plugins.min.css"/>
     <link rel="stylesheet" href="assets/css/style.min.css">
+    <script src="assets/js/vendor/vendor.min.js"></script>
+    <script>
+        $(function () {
+            $("#src0").click(function () {
+                event.preventDefault();
+                var key = $(this).prev().val();
+                $.ajax({
+                    url: "customer?action=searchFurn",
+                    method: "post",
+                    data: {
+                        key: key
+                    },
+                    success: function (data) {
+                        location.href = "customer?action=listFurn&page=1";
+                    }
+                })
+            })
+            <%
+            if(session.getAttribute("searchKey") != null && !session.getAttribute("searchKey").equals("")){
+            %>
+            $("#src2").click()
+            $("input[type='text']").val("<%=session.getAttribute("searchKey")%>")
+            <%
+            }
+            %>
+        })
+    </script>
 </head>
 
 <body>
@@ -24,7 +52,7 @@
                 <!-- Header Logo Start -->
                 <div class="col-auto align-self-center">
                     <div class="header-logo">
-                        <a href="index.html"><img src="assets/images/logo/logo.png" alt="Site Logo"/></a>
+                        <a href="index.jsp"><img src="assets/images/logo/logo.png" alt="Site Logo"/></a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -33,12 +61,13 @@
                 <div class="col align-self-center">
                     <div class="header-actions">
                         <div class="header_account_list">
-                            <a href="javascript:void(0)" class="header-action-btn search-btn"><i
+                            <a id="src2" href="javascript:void(0)" class="header-action-btn search-btn"><i
                                     class="icon-magnifier"></i></a>
                             <div class="dropdown_search">
                                 <form class="action-form" action="#">
                                     <input class="form-control" placeholder="Enter your search key" type="text">
-                                    <button class="submit" type="submit"><i class="icon-magnifier"></i></button>
+                                    <button class="submit" type="submit" id="src0"><i class="icon-magnifier"></i>
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -73,7 +102,7 @@
                 <!-- Header Logo Start -->
                 <div class="col-auto align-self-center">
                     <div class="header-logo">
-                        <a href="index.html"><img width="280px" src="assets/images/logo/logo.png" alt="Site Logo"/></a>
+                        <a href="index.jsp"><img width="280px" src="assets/images/logo/logo.png" alt="Site Logo"/></a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -102,14 +131,27 @@
                     <!-- 1st tab start -->
                     <div class="tab-pane fade show active" id="tab-product-new-arrivals">
                         <div class="row">
+                            <%
+                                Page<Furn> furnInfo = (Page<Furn>) session.getAttribute("page");
+                                if (furnInfo == null) {
+                                    response.sendRedirect("customer?action=listFurn&page=1");
+                                    return;
+                                }
+                                if (furnInfo.getMaxPage() > 1 && (furnInfo.getPageNo() > furnInfo.getMaxPage())) {
+                                    response.sendRedirect("customer?action=listFurn&page=" + (furnInfo.getMaxPage()));
+                                    return;
+                                }
+                                int time = 0;
+                                for (Furn furn : furnInfo.getItems()) {
+                            %>
                             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6" data-aos="fade-up"
-                                 data-aos-delay="200">
+                                 data-aos-delay="<%=200+(time++)*200%>">
                                 <!-- Single Prodect -->
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="shop-left-sidebar.html" class="image">
-                                            <img src="assets/images/product-image/6.jpg" alt="Product"/>
-                                            <img class="hover-image" src="assets/images/product-image/5.jpg"
+                                            <img src="<%=furn.getPath()%>" alt="Product"/>
+                                            <img class="hover-image" src="<%=furn.getPath()%>"
                                                  alt="Product"/>
                                         </a>
                                         <span class="badges">
@@ -126,155 +168,27 @@
                                     </div>
                                     <div class="content">
                                         <h5 class="title">
-                                            <a href="shop-left-sidebar.html">Simple 北欧小桌 </a></h5>
+                                            <a href="shop-left-sidebar.html"><%=furn.getName()%>
+                                            </a></h5>
                                         <span class="price">
-                                                <span class="new">家居:　北欧简约家具</span>
+                                                <span class="new">家居:　<%=furn.getName()%></span>
                                             </span>
                                         <span class="price">
-                                                <span class="new">厂商:　瑞典</span>
+                                                <span class="new">厂商:　<%=furn.getMerchant()%></span>
                                             </span>
                                         <span class="price">
-                                                <span class="new">价格:　￥2030.00</span>
+                                                <span class="new">价格:　￥<%=furn.getPrice()%></span>
                                             </span>
                                         <span class="price">
-                                                <span class="new">销量:　668</span>
+                                                <span class="new">销量:　<%=furn.getSales()%></span>
                                             </span>
                                         <span class="price">
-                                                <span class="new">库存:　20</span>
+                                                <span class="new">库存:　<%=furn.getTotal() - furn.getSales()%></span>
                                             </span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6" data-aos="fade-up"
-                                 data-aos-delay="400">
-                                <!-- Single Prodect -->
-                                <div class="product">
-                                    <div class="thumb">
-                                        <a href="shop-left-sidebar.html" class="image">
-                                            <img src="assets/images/product-image/4.jpg" alt="Product"/>
-                                            <img class="hover-image" src="assets/images/product-image/3.jpg"
-                                                 alt="Product"/>
-                                        </a>
-                                        <span class="badges">
-                                                <span class="sale">-10%</span>
-                                            <span class="new">New</span>
-                                            </span>
-                                        <div class="actions">
-                                            <a href="#" class="action wishlist" data-link-action="quickview"
-                                               title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                    class="icon-size-fullscreen"></i></a>
-                                        </div>
-                                        <button title="Add To Cart" class=" add-to-cart">Add
-                                            To Cart
-                                        </button>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="title">
-                                            <a href="shop-left-sidebar.html">Simple 北欧椅子 </a></h5>
-                                        <span class="price">
-                                                <span class="new">家居:　北欧简约家具</span>
-                                            </span>
-                                        <span class="price">
-                                                <span class="new">厂商:　瑞典</span>
-                                            </span>
-                                        <span class="price">
-                                                <span class="new">价格:　￥2030.00</span>
-                                            </span>
-                                        <span class="price">
-                                                <span class="new">销量:　668</span>
-                                            </span>
-                                        <span class="price">
-                                                <span class="new">库存:　20</span>
-                                            </span>
-                                    </div>
-                                </div>
-                                <!-- Single Prodect -->
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-es-30px" data-aos="fade-up"
-                                 data-aos-delay="600">
-                                <!-- Single Prodect -->
-                                <div class="product">
-                                    <div class="thumb">
-                                        <a href="shop-left-sidebar.html" class="image">
-                                            <img src="assets/images/product-image/14.jpg" alt="Product"/>
-                                            <img class="hover-image" src="assets/images/product-image/13.jpg"
-                                                 alt="Product"/>
-                                        </a>
-                                        <span class="badges">
-                                            </span>
-                                        <div class="actions">
-                                            <a href="#" class="action wishlist" data-link-action="quickview"
-                                               title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                    class="icon-size-fullscreen"></i></a>
-                                        </div>
-                                        <button title="Add To Cart" class=" add-to-cart">Add
-                                            To Cart
-                                        </button>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="title">
-                                            <a href="shop-left-sidebar.html">Simple 北欧台灯 </a></h5>
-                                        <span class="price">
-                                                <span class="new">家居:　北欧简约家具</span>
-                                            </span>
-                                        <span class="price">
-                                                <span class="new">厂商:　瑞典</span>
-                                            </span>
-                                        <span class="price">
-                                                <span class="new">价格:　￥2030.00</span>
-                                            </span>
-                                        <span class="price">
-                                                <span class="new">销量:　668</span>
-                                            </span>
-                                        <span class="price">
-                                                <span class="new">库存:　20</span>
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 " data-aos="fade-up" data-aos-delay="800">
-                                <!-- Single Prodect -->
-                                <div class="product">
-                                    <div class="thumb">
-                                        <a href="shop-left-sidebar.html" class="image">
-                                            <img src="assets/images/product-image/16.jpg" alt="Product"/>
-                                            <img class="hover-image" src="assets/images/product-image/15.jpg"
-                                                 alt="Product"/>
-                                        </a>
-                                        <span class="badges">
-                                                <span class="new">New</span>
-                                            </span>
-                                        <div class="actions">
-                                            <a href="#" class="action wishlist" data-link-action="quickview"
-                                               title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                    class="icon-size-fullscreen"></i></a>
-                                        </div>
-                                        <button title="Add To Cart~" class=" add-to-cart">Add
-                                            To Cart
-                                        </button>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="title">
-                                            <a href="shop-left-sidebar.html">Simple 北欧盆景架 </a></h5>
-                                        <span class="price">
-                                                <span class="new">家居:　北欧简约家具</span>
-                                            </span>
-                                        <span class="price">
-                                                <span class="new">厂商:　瑞典</span>
-                                            </span>
-                                        <span class="price">
-                                                <span class="new">价格:　￥2030.00</span>
-                                            </span>
-                                        <span class="price">
-                                                <span class="new">销量:　668</span>
-                                            </span>
-                                        <span class="price">
-                                                <span class="new">库存:　20</span>
-                                            </span>
-                                    </div>
-                                </div>
-                                <!-- Single Prodect -->
-                            </div>
+                            <% } %>
                         </div>
                     </div>
                     <!-- 1st tab end -->
@@ -286,15 +200,57 @@
 <!--  Pagination Area Start -->
 <div class="pro-pagination-style text-center mb-md-30px mb-lm-30px mt-6" data-aos="fade-up">
     <ul>
-        <li><a href="#">首页</a></li>
-        <li><a href="#">上页</a></li>
-        <li><a class="active" href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#">下页</a></li>
-        <li><a href="#">末页</a></li>
-        <li><a>共10页</a></li>
-        <li><a>共90记录</a></li>
+        <%
+            int currentPage = furnInfo.getPageNo();
+            int maxPages = furnInfo.getMaxPage();
+            int startPage, endPage;
+
+            if (maxPages <= 7) {
+                // 如果总页数不超过7，显示所有页码
+                startPage = 1;
+                endPage = maxPages;
+            } else {
+                // 根据当前页计算起始页和结束页
+                if (currentPage - 4 <= 1) {
+                    startPage = 1;
+                    endPage = 7;
+                } else if (currentPage + 4 >= maxPages) {
+                    startPage = maxPages - 6;
+                    endPage = maxPages;
+                } else {
+                    startPage = currentPage - 2;
+                    endPage = currentPage + 2;
+                }
+            }
+        %>
+        <li><a href="customer?action=listFurn&page=<%=Math.max(currentPage - 1, 1)%>">上一页</a></li>
+        <%
+            if (startPage > 1) {
+        %>
+        <li><a href="customer?action=listFurn&page=1">1</a></li>
+        <li>...</li>
+        <% }
+            for (int i = startPage; i <= endPage; i++) {
+                if (i == currentPage) {
+        %>
+        <li><a class="active"><%=i%>
+        </a></li>
+        <% } else {
+        %>
+        <li><a href="customer?action=listFurn&page=<%=i%>"><%=i%>
+        </a></li>
+        <% }
+        }
+            if (endPage < maxPages) {
+        %>
+        <li>...</li>
+        <li><a href="customer?action=listFurn&page=<%=maxPages%>"><%=maxPages%>
+        </a></li>
+        <% }
+        %>
+        <li><a href="customer?action=listFurn&page=<%=Math.min(currentPage + 1, maxPages)%>">下一页</a>
+        </li>
+        <li><a>共<%=furnInfo.getTotalRow()%>记录</a></li>
     </ul>
 </div>
 <!--  Pagination Area End -->

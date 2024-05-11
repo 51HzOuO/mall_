@@ -6,14 +6,14 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws NoSuchAlgorithmException, SQLException {
-        int count;
+
+        String key = "clion1";
+
         try {
-
-            count = (int) ((long) GetQueryRunner.getQueryRunner().query("select count(*) from furniture", new ScalarHandler<>()));
-
+            int query = (int) (long) GetQueryRunner.getQueryRunner().query(("select count(*) from furniture where `name` like ? "), new ScalarHandler<>(), "%" + key + "%");
+            System.out.println(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(count);
     }
 }

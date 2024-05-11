@@ -81,4 +81,23 @@ public class FurnServiceImpl implements FurnService {
         }
         return furnPage;
     }
+
+    @Override
+    public Page<Furn> queryFurnByPage(int pageNo, int pageSize, String key) {
+        Page<Furn> furnPage = new Page<>();
+        furnPage.setPageNo(pageNo);
+        furnPage.setPageSize(pageSize);
+        try {
+            furnPage.setTotalRow((int) (long) GetQueryRunner.getQueryRunner().query(("select count(*) from furniture where name like ? "), new ScalarHandler<>(), "%" + key + "%"));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        furnPage.setMaxPage((int) Math.ceil((double) furnPage.getTotalRow() / pageSize));
+        try {
+            furnPage.setItems(GetQueryRunner.getQueryRunner().query("select id , img_path path , name , merchant , price , sales , total from furniture where name like ? limit ?,?  ", new BeanListHandler<>(Furn.class), "%" + key + "%", (pageNo - 1) * pageSize, pageSize));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return furnPage;
+    }
 }
