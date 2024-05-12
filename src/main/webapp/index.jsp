@@ -1,5 +1,6 @@
 <%@ page import="com.demo.mall1.beans.Furn" %>
 <%@ page import="com.demo.mall1.beans.Page" %>
+<%@ page import="com.demo.mall1.beans.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,13 +72,35 @@
                                 </form>
                             </div>
                         </div>
-                        <!-- Single Wedge Start -->
+                        <%
+                            User user = (User) session.getAttribute("user");
+                            if (user == null) {
+                        %>
                         <div class="header-bottom-set dropdown">
                             <a href="views/member/login.jsp">登录|注册</a>
                         </div>
+                        <%
+                        } else {
+                        %>
+                        <div class="header-bottom-set dropdown">
+                            <a>Welcome: <%=user.getUsername()%>
+                            </a>
+                        </div>
+                        <%
+                            if (user.getType() == 1) {
+                        %>
                         <div class="header-bottom-set dropdown">
                             <a href="manage_login">后台管理</a>
                         </div>
+                        <%
+                            }
+                        %>
+                        <div class="header-bottom-set dropdown">
+                            <a href="user?action=logout">退出</a>
+                        </div>
+                        <%
+                            }
+                        %>
                         <!-- Single Wedge End -->
                         <a href="#offcanvas-cart"
                            class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
