@@ -14,7 +14,6 @@ public class UserServlet extends BasicServlet {
     public static final ThreadLocal<Object> returnInfo = new ThreadLocal<>();
     private final UserService userService = new UserServiceImpl();
 
-    //模板设计模式 前端发送hidden参数action=verifyAdministrator
     public void verifyAdministrator(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
@@ -26,5 +25,10 @@ public class UserServlet extends BasicServlet {
             req.getSession().setAttribute("error", returnInfo.get());
             resp.sendRedirect("manage_login");
         }
+    }
+
+    public void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        req.getSession().removeAttribute("user");
+        resp.sendRedirect(req.getContextPath());
     }
 }
