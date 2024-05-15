@@ -71,7 +71,7 @@ public class ManageServlet extends BasicServlet {
             resp.sendRedirect("views/manage/furn_update.jsp");
             return;
         }
-        Furn furn = furnService.queryFurnById(Integer.parseInt(id));
+        Furn furn = furnService.queryFurnById(id);
         req.getSession().setAttribute("furn", furn);
     }
 
@@ -89,7 +89,7 @@ public class ManageServlet extends BasicServlet {
 
         Collection<Part> parts = req.getParts();
 
-        Furn existingFurn = furnService.queryFurnById(Integer.parseInt(id));
+        Furn existingFurn = furnService.queryFurnById(id);
         if (existingFurn == null) {
             resp.getWriter().write("商品不存在");
             return;

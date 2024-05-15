@@ -1,3 +1,6 @@
+<%@ page import="com.demo.mall1.beans.User" %>
+<%@ page import="com.demo.mall1.beans.Cart" %>
+<%@ page import="com.demo.mall1.beans.CartItem" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,15 +34,46 @@
                 <!-- Header Action Start -->
                 <div class="col align-self-center">
                     <div class="header-actions">
-                        <div class="header-bottom-set dropdown">
-                            <a>欢迎: hello</a>
+                        <div class="header_account_list">
+                            <a id="src2" href="javascript:void(0)" class="header-action-btn search-btn"><i
+                                    class="icon-magnifier"></i></a>
+                            <div class="dropdown_search">
+                                <form class="action-form" action="#">
+                                    <input class="form-control" placeholder="Enter your search key" type="text">
+                                    <button class="submit" type="submit" id="src0"><i class="icon-magnifier"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
+                        <%
+                            User user = (User) session.getAttribute("user");
+                            if (user == null) {
+                        %>
                         <div class="header-bottom-set dropdown">
-                            <a href="#">订单管理</a>
+                            <a href="views/member/login.jsp">登录|注册</a>
                         </div>
+                        <%
+                        } else {
+                        %>
                         <div class="header-bottom-set dropdown">
-                            <a href="#">安全退出</a>
+                            <a>Welcome: <%=user.getUsername()%>
+                            </a>
                         </div>
+                        <%
+                            if (user.getType() == 1) {
+                        %>
+                        <div class="header-bottom-set dropdown">
+                            <a href="manage_login">后台管理</a>
+                        </div>
+                        <%
+                            }
+                        %>
+                        <div class="header-bottom-set dropdown">
+                            <a href="user?action=logout">退出</a>
+                        </div>
+                        <%
+                            }
+                        %>
                     </div>
                 </div>
                 <!-- Header Action End -->
@@ -100,31 +134,48 @@
                                 <th>操作</th>
                             </tr>
                             </thead>
+                            <%
+                                Cart cart = (Cart) session.getAttribute("cart");
+                                if (cart == null) {
+                                    cart = new Cart();
+                                    session.setAttribute("cart", cart);
+                                }
+                            %>
                             <tbody>
+                            <%
+                                for (CartItem cartItem : cart.getItems()) {
+                            %>
                             <tr>
                                 <td class="product-thumbnail">
-                                    <a href="#"><img class="img-responsive ml-3" src="assets/images/product-image/1.jpg"
+                                    <a href="#"><img class="img-responsive ml-3" src="<%=cartItem.getPath()%>"
                                                      alt=""/></a>
                                 </td>
-                                <td class="product-name"><a href="#">Product Name</a></td>
-                                <td class="product-price-cart"><span class="amount">$60.00</span></td>
+                                <td class="product-name"><a href="#"><%=cartItem.getName()%>
+                                </a></td>
+                                <td class="product-price-cart"><span class="amount">￥<%=cartItem.getPrice()%></span>
+                                </td>
                                 <td class="product-quantity">
                                     <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1"/>
+                                        <input class="cart-plus-minus-box" type="text" name="qtybutton"
+                                               value="<%=cartItem.getCount()%>"/>
                                     </div>
                                 </td>
-                                <td class="product-subtotal">$70.00</td>
+                                <td class="product-subtotal"><%=cartItem.getTotalPrice()%>
+                                </td>
                                 <td class="product-remove">
                                     <a href="#"><i class="icon-close"></i></a>
                                 </td>
                             </tr>
+                            <%
+                                }
+                            %>
                             </tbody>
                         </table>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="cart-shiping-update-wrapper">
-                                <h4>共xx件商品 总价 xxxx.xx元</h4>
+                                <h4>共<%=cart.getTotalCount()%>件商品 总价 <%=cart.getTotalPrice()%>元</h4>
                                 <div class="cart-shiping-update">
                                     <a href="#">购 物 车 结 账</a>
                                 </div>

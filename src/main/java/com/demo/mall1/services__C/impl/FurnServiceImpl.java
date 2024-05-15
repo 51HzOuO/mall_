@@ -12,6 +12,7 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public class FurnServiceImpl implements FurnService {
     @Override
@@ -43,7 +44,7 @@ public class FurnServiceImpl implements FurnService {
     }
 
     @Override
-    public Furn queryFurnById(int id) {
+    public Furn queryFurnById(String id) {
         try {
             return GetQueryRunner.getQueryRunner().query("select id , img_path path , name , merchant , price , sales , total from furniture where id = ?", new BeanHandler<>(Furn.class), id);
         } catch (SQLException e) {
@@ -54,7 +55,7 @@ public class FurnServiceImpl implements FurnService {
     @Override
     public boolean deleteFurn(String id) {
         try {
-            Furn furn = queryFurnById(Integer.parseInt(id));
+            Furn furn = queryFurnById(id);
             String path = furn.getPath();
             new File(ServletInitListener.contextPath + path).delete();
             return GetQueryRunner.getQueryRunner().update("delete from furniture where id = ?", id) == 1;
@@ -99,5 +100,16 @@ public class FurnServiceImpl implements FurnService {
             throw new RuntimeException(e);
         }
         return furnPage;
+    }
+
+    @Override
+    public boolean addFurnToCart(String id, Map<Furn, Integer> map) {
+        Furn furn = queryFurnById(id);
+        if (furn == null) {
+            return false;
+        } else {
+            map.put(furn, map.getOrDefault(furn, 0) + 1);
+            return true;
+        }
     }
 }

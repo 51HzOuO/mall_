@@ -1,6 +1,8 @@
 <%@ page import="com.demo.mall1.beans.Furn" %>
 <%@ page import="com.demo.mall1.beans.Page" %>
 <%@ page import="com.demo.mall1.beans.User" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="com.demo.mall1.beans.Cart" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +18,35 @@
     <script src="assets/js/vendor/vendor.min.js"></script>
     <script>
         $(function () {
+            var cart = $(".cart-ui");
+            $.ajax({
+                url: "customer?action=getCartTotalCount",
+                method: "post",
+                success: function (data) {
+                    cart.html(data);
+                    if (data !== "0") {
+                        cart.show();
+                    }
+                }
+            })
+            cart.hide();
+            $(".add-to-cart").click(function () {
+                event.preventDefault();
+                var id = $(this).closest('.product').find('.id').val();
+                $.ajax({
+                    url: "customer?action=addToCart",
+                    method: "post",
+                    data: {
+                        id: id
+                    },
+                    success: function (data) {
+                        cart.html(data);
+                        if (data !== "0") {
+                            cart.show();
+                        }
+                    }
+                })
+            })
             $("#src0").click(function () {
                 event.preventDefault();
                 var key = $(this).prev().val();
@@ -102,14 +133,10 @@
                             }
                         %>
                         <!-- Single Wedge End -->
-                        <a href="#offcanvas-cart"
-                           class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
+                        <a href="cart.jsp"
+                           class="header-action-btn header-action-btn-cart pr-0">
                             <i class="icon-handbag"> 购物车</i>
-                            <span class="header-action-num">88</span>
-                        </a>
-                        <a href="#offcanvas-mobile-menu"
-                           class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
-                            <i class="icon-menu"></i>
+                            <span class="header-action-num cart-ui"></span>
                         </a>
                     </div>
                 </div>
@@ -185,13 +212,16 @@
                                                title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
                                                     class="icon-size-fullscreen"></i></a>
                                         </div>
-                                        <button title="Add To Cart" class=" add-to-cart">Add
+                                        <button title="Add To Cart" class="add-to-cart">Add
                                             To Cart
                                         </button>
                                     </div>
                                     <div class="content">
+                                        <div>
+                                            <input type="hidden" value="<%=furn.getId()%>" class="id">
+                                        </div>
                                         <h5 class="title">
-                                            <a href="shop-left-sidebar.html"><%=furn.getName()%>
+                                            <a><%=furn.getName()%>
                                             </a></h5>
                                         <span class="price">
                                                 <span class="new">家居:　<%=furn.getName()%></span>
