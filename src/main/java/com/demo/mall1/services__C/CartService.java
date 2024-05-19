@@ -10,7 +10,7 @@ import java.util.List;
 public interface CartService {
     void addCartItem(Cart cart, Furn furn);
 
-    void setItemCount(Cart cart, Furn furn, int count);
+    int setItemCount(Cart cart, Furn furn, int count);
 
     void deleteItem(Cart cart, Furn furn);
 

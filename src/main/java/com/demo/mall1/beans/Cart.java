@@ -30,33 +30,33 @@ public class Cart {
     }
 
     //cart page modify count
-    public void setItemCount(Furn furn, int count) {
-        this.totalCount = this.totalCount - items.get(furn.getId()).getCount() + count;
+    public int setItemCount(Furn furn, int count) {
+        int ret;
         CartItem cartItem = items.get(furn.getId());
         if (cartItem == null) {
+            this.totalCount = this.totalCount + count;
             cartItem = new CartItem();
             cartItem.setId(furn.getId());
             cartItem.setName(furn.getName());
             cartItem.setPrice(furn.getPrice());
             cartItem.setCount(count);
             items.put(furn.getId(), cartItem);
+            ret = 0;
         } else {
+            ret = cartItem.getCount();
+            this.totalCount = this.totalCount - items.get(furn.getId()).getCount() + count;
             totalPrice = totalPrice.subtract(cartItem.getTotalPrice());
             cartItem.setCount(count);
             totalPrice = totalPrice.add(cartItem.getTotalPrice());
         }
+        return ret;
     }
 
     //cart page modify item
     public void deleteItem(Furn furn) {
         this.totalCount = this.totalCount - items.get(furn.getId()).getCount();
-        CartItem cartItem = items.get(furn.getId());
-        if (cartItem.getCount() == 1) {
-            items.remove(furn.getId());
-        } else {
-            cartItem.setCount(cartItem.getCount() - 1);
-        }
-        totalPrice = totalPrice.subtract(furn.getPrice());
+        this.totalPrice = totalPrice.subtract(items.get(furn.getId()).getTotalPrice());
+        items.remove(furn.getId());
     }
 
     public void clear() {

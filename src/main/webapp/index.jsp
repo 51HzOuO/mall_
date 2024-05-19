@@ -199,7 +199,7 @@
                                 <!-- Single Prodect -->
                                 <div class="product">
                                     <div class="thumb">
-                                        <a href="shop-left-sidebar.html" class="image">
+                                        <a class="image">
                                             <img src="<%=furn.getPath()%>" alt="Product"/>
                                             <img class="hover-image" src="<%=furn.getPath()%>"
                                                  alt="Product"/>
@@ -207,11 +207,6 @@
                                         <span class="badges">
                                                 <span class="new">New</span>
                                             </span>
-                                        <div class="actions">
-                                            <a href="#" class="action wishlist" data-link-action="quickview"
-                                               title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                    class="icon-size-fullscreen"></i></a>
-                                        </div>
                                         <button title="Add To Cart" class="add-to-cart">Add
                                             To Cart
                                         </button>

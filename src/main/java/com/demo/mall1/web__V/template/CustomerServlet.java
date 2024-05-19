@@ -66,4 +66,12 @@ public class CustomerServlet extends BasicServlet {
         Cart cart = (Cart) req.getSession().getAttribute("cart");
         cartService.clear(cart);
     }
+
+    public void setItemCount(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        Cart cart = (Cart) req.getSession().getAttribute("cart");
+        String id = req.getParameter("id");
+        int count = Integer.parseInt(req.getParameter("count"));
+        int origin = cartService.setItemCount(cart, furnService.queryFurnById(id), count);
+        resp.getWriter().write(origin + "");
+    }
 }
