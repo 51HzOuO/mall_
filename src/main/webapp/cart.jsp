@@ -13,6 +13,154 @@
     <link rel="stylesheet" href="assets/css/vendor/vendor.min.css"/>
     <link rel="stylesheet" href="assets/css/plugins/plugins.min.css"/>
     <link rel="stylesheet" href="assets/css/style.min.css"/>
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#clear-cart").click(function () {
+                if (confirm("确定要清空购物车吗？")) {
+                    $.ajax({
+                        url: "customer?action=clearCart",
+                        success: function () {
+                            window.location.reload();
+                        },
+                        error: function () {
+                            alert("清空失败，请稍后重试。");
+                        }
+                    });
+                }
+            })
+
+            function load() {
+                var CartPlusMinus = $(".cart-plus-minus");
+                CartPlusMinus.prepend('<div class="dec qtybutton">-</div>');
+                CartPlusMinus.append('<div class="inc qtybutton">+</div>');
+                $(".qtybutton").on("click", function (event) {
+                    event.preventDefault(); // 防止事件冒泡
+                    var $button = $(this);
+                    var $input = $button.siblings("input.cart-plus-minus-box");
+                    var oldValue = parseInt($input.val());
+                    var id = $button.closest('td').find('input[type="hidden"]').val();
+                    var newVal;
+
+                    if ($button.hasClass("inc")) {
+                        newVal = oldValue + 1;
+                    } else {
+                        // Don't allow decrementing below one
+                        if (oldValue > 1) {
+                            newVal = oldValue - 1;
+                        } else {
+                            newVal = 1;
+                        }
+                    }
+
+                    $input.val(newVal);
+                    updateCart(id, newVal, $button.closest("tr"));
+                });
+            }
+
+            load();
+
+            $(".icon-close").click(function () {
+                // 显示确认弹窗
+                if (confirm("确定要删除该商品吗？")) {
+                    // 获取ID
+                    var id = $(this).closest('td').find('input[type="hidden"]').val();
+                    var $row = $(this).closest('tr'); // 缓存当前行，避免在AJAX内部使用 $(this)
+
+                    // 发送AJAX请求
+                    $.ajax({
+                        url: "customer?action=deleteCart",
+                        data: {
+                            id: id
+                        },
+                        success: function () {
+                            // 删除成功后移除该行
+                            $row.remove();
+                            updateCartTotal();
+                        },
+                        error: function () {
+                            alert("删除失败，请稍后重试。");
+                        }
+                    });
+                }
+            });
+
+            // 处理数量输入框的直接输入
+            $(".cart-plus-minus-box").change(function () {
+                var count = parseInt($(this).val());
+                var id = $(this).closest('td').find('input[type="hidden"]').val();
+                if (count >= 1) {
+                    updateCart(id, count, $(this).closest("tr"));
+                } else {
+                    $(this).val(1);
+                    updateCart(id, 1, $(this).closest("tr"));
+                }
+            });
+
+            // 更新购物车
+            function updateCart(id, count, $row) {
+                $.ajax({
+                    type: "POST",
+                    url: "customer",
+                    data: {
+                        action: "setItemCount",
+                        id: id,
+                        count: count
+                    },
+                    success: function (data) {
+                        var origin = parseInt(data);
+
+                        // 更新当前行的金额
+                        var price = parseFloat($row.find(".product-price-cart .amount").text().substring(1));
+                        var newTotal = (price * count).toFixed(2);
+                        $row.find(".product-subtotal").text(newTotal);
+
+                        updateCartTotal();
+                    },
+                    error: function () {
+                        alert("更新失败，请稍后重试。");
+                    }
+                });
+            }
+
+            function updateCartTotal() {
+                var $cartTotal = $(".cart-shiping-update-wrapper h4");
+                var totalCount = 0;
+                var totalPrice = 0.0;
+
+                $(".cart-plus-minus-box").each(function () {
+                    var qty = parseInt($(this).val());
+                    var itemPrice = parseFloat($(this).closest("tr").find(".product-price-cart .amount").text().substring(1));
+                    totalCount += qty;
+                    totalPrice += qty * itemPrice;
+                });
+
+                totalPrice = totalPrice.toFixed(2);
+                $cartTotal.html("共" + totalCount + "件商品 总价 " + totalPrice + "元");
+            }
+
+            // 显示支付弹窗
+            $("#pay").click(function () {
+                $("#payment-modal").show();
+                $("#modal-overlay").show();
+            });
+
+            // 关闭支付弹窗并跳转
+            $("#payment-done").click(function () {
+                $("#payment-modal").hide();
+                $("#modal-overlay").hide();
+                window.location.href = "支付完成后的跳转页面.jsp"; // 替换为实际的跳转页面
+            });
+
+            // 点击遮罩层关闭弹窗
+            $("#modal-overlay").click(function () {
+                $("#payment-modal").hide();
+                $("#modal-overlay").hide();
+            });
+        });
+    </script>
+
+
 </head>
 
 <body>
@@ -158,12 +306,14 @@
                                     <div class="cart-plus-minus">
                                         <input class="cart-plus-minus-box" type="text" name="qtybutton"
                                                value="<%=cartItem.getCount()%>"/>
+                                        <input type="hidden" value="<%=cartItem.getId()%>" name="id"/>
                                     </div>
                                 </td>
                                 <td class="product-subtotal"><%=cartItem.getTotalPrice()%>
                                 </td>
                                 <td class="product-remove">
                                     <a href="#"><i class="icon-close"></i></a>
+                                    <input type="hidden" value="<%=cartItem.getId()%>" name="id"/>
                                 </td>
                             </tr>
                             <%
@@ -177,22 +327,32 @@
                             <div class="cart-shiping-update-wrapper">
                                 <h4>共<%=cart.getTotalCount()%>件商品 总价 <%=cart.getTotalPrice()%>元</h4>
                                 <div class="cart-shiping-update">
-                                    <a href="#">购 物 车 结 账</a>
+                                    <a id="pay">购 物 车 结 账</a>
                                 </div>
                                 <div class="cart-clear">
                                     <button>继 续 购 物</button>
-                                    <a href="#">清 空 购 物 车</a>
+                                    <a id="clear-cart">清 空 购 物 车</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
 </div>
 <!-- Cart Area End -->
+<!-- Payment Modal Start -->
+<div id="payment-modal"
+     style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:300px; padding:20px; background:white; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.1); z-index:1000;">
+    <h4>支付确认</h4>
+    <p>请确认您已完成支付</p>
+    <img src="assets/images/pay-img/pay.jpg" alt="支付图片" style="width:100%; height:auto;"/>
+    <button id="payment-done" style="margin-top:20px;">我已支付</button>
+</div>
+<!-- Payment Modal End -->
+<div id="modal-overlay"
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.5); z-index:999;"></div>
 
 <!-- Footer Area Start -->
 <div class="footer-area">

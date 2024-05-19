@@ -16,8 +16,8 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void setItemCount(Cart cart, Furn furn, int count) {
-        cart.setItemCount(furn, count);
+    public int setItemCount(Cart cart, Furn furn, int count) {
+        return cart.setItemCount(furn, count);
     }
 
     @Override
