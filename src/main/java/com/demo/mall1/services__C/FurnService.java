@@ -11,7 +11,7 @@ public interface FurnService {
 
     void addFurn(Furn furn);
 
-    boolean updateFurn(Furn furn);
+    void updateFurn(Furn furn);
 
     Furn queryFurnById(String id);
 

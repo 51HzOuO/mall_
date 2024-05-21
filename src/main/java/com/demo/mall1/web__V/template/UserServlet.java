@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(urlPatterns = "/user")
 public class UserServlet extends BasicServlet {
@@ -30,5 +31,18 @@ public class UserServlet extends BasicServlet {
     public void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.getSession().removeAttribute("user");
         resp.sendRedirect(req.getContextPath());
+    }
+
+    public void checkUserName(HttpServletRequest req, HttpServletResponse resp) throws IOException, SQLException {
+        String username = req.getParameter("username");
+        if (userService.isExist(username)) {
+            resp.getWriter().write("用户名已存在");
+            return;
+        }
+        if (!username.matches("^\\w{4,16}$")) {
+            resp.getWriter().write("format-error");
+        } else {
+            resp.getWriter().write("ok");
+        }
     }
 }

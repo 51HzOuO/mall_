@@ -35,9 +35,9 @@ public class FurnServiceImpl implements FurnService {
 
 
     @Override
-    public boolean updateFurn(Furn furn) {
+    public void updateFurn(Furn furn) {
         try {
-            return GetQueryRunner.getQueryRunner().update("update furniture set img_path = ?, name = ?, merchant = ?, price = ?, sales = ?, total = ? where id = ?", furn.getPath(), furn.getName(), furn.getMerchant(), furn.getPrice(), furn.getSales(), furn.getTotal(), furn.getId()) > 0;
+            GetQueryRunner.getQueryRunner().update("update furniture set img_path = ?, name = ?, merchant = ?, price = ?, sales = ?, total = ? where id = ?", furn.getPath(), furn.getName(), furn.getMerchant(), furn.getPrice(), furn.getSales(), furn.getTotal(), furn.getId());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

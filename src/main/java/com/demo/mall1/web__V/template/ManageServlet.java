@@ -4,6 +4,7 @@ import com.demo.mall1.beans.Furn;
 import com.demo.mall1.beans.Page;
 import com.demo.mall1.services__C.FurnService;
 import com.demo.mall1.services__C.impl.FurnServiceImpl;
+import com.demo.mall1.utils.GetQueryRunner;
 import com.demo.mall1.web__V.BasicServlet;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -99,21 +100,18 @@ public class ManageServlet extends BasicServlet {
         File fileToDelete = new File(req.getServletContext().getRealPath(existingPath));
 
         String newPath = null;
-        for (Part part : parts) {
-            if (part.getSubmittedFileName() == null) {
-                continue;
+        Part part = req.getPart("imagefile");
+
+        if (part != null) {
+
+            String temp = "assets/images/product-image/";
+            String prePath = req.getServletContext().getRealPath("/assets/images/product-image/");
+            while (new File(prePath + part.getSubmittedFileName()).exists()) {
+                prePath += "1"; // Add "1" to the path
+                temp += "1";    // and temp to make a new unique path
             }
-            if (part.getSubmittedFileName().startsWith(name)) {
-                String temp = "assets/images/product-image/";
-                String prePath = req.getServletContext().getRealPath("/assets/images/product-image/");
-                while (new File(prePath + part.getSubmittedFileName()).exists()) {
-                    prePath += "1"; // Add "1" to the path
-                    temp += "1";    // and temp to make a new unique path
-                }
-                newPath = temp + part.getSubmittedFileName();
-                part.write(prePath + part.getSubmittedFileName());
-                break;
-            }
+            newPath = temp + part.getSubmittedFileName();
+            part.write(prePath + part.getSubmittedFileName());
         }
 
         // Delete the old file if a new file has been uploaded
@@ -129,11 +127,11 @@ public class ManageServlet extends BasicServlet {
         req.getSession().removeAttribute("furn");
 
         Furn updatedFurn = new Furn(Integer.parseInt(id), newPath, name, maker, new BigDecimal(price), Integer.parseInt(sales), Integer.parseInt(stock));
-        boolean updateStatus = furnService.updateFurn(updatedFurn);
-        if (updateStatus) {
-            req.getSession().setAttribute("page", furnService.queryFurnByPage(((Page<Furn>) req.getSession().getAttribute("page")).getPageNo(), 5));
-        }
-        resp.getWriter().write(updateStatus ? "修改成功" : "修改失败");
+        furnService.updateFurn(updatedFurn);
+        GetQueryRunner.closeConnection();
+
+        req.getSession().setAttribute("page", furnService.queryFurnByPage(((Page<Furn>) req.getSession().getAttribute("page")).getPageNo(), 5));
+        resp.getWriter().write("修改成功");
     }
 
     public void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {

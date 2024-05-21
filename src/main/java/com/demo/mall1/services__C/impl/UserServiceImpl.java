@@ -80,6 +80,14 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 
+    public boolean isExist(String username) {
+        try {
+            return getUserByUsername(username) != null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     @Override
     public boolean login(User user) {

@@ -1,5 +1,6 @@
 package com.demo.mall1.web__V;
 
+import com.demo.mall1.utils.GetQueryRunner;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,7 +25,9 @@ public abstract class BasicServlet extends HttpServlet {
             // 例如: public void login(HttpServletRequest req, HttpServletResponse resp) {}
             this.getClass().getDeclaredMethod(req.getParameter("action"), HttpServletRequest.class, HttpServletResponse.class).invoke(this, req, resp);
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | NullPointerException e) {
-            resp.sendRedirect("404.jsp");
+            e.printStackTrace();
+            GetQueryRunner.closeConnection();
+            resp.sendError(500);
         }
     }
 }
