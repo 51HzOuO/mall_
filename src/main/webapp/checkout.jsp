@@ -1,4 +1,6 @@
+<%@ page import="com.demo.mall1.beans.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,15 +32,46 @@
                 <!-- Header Action Start -->
                 <div class="col align-self-center">
                     <div class="header-actions">
-                        <div class="header-bottom-set dropdown">
-                            <a>欢迎: hello</a>
+                        <div class="header_account_list">
+                            <a id="src2" href="javascript:void(0)" class="header-action-btn search-btn"><i
+                                    class="icon-magnifier"></i></a>
+                            <div class="dropdown_search">
+                                <form class="action-form" action="#">
+                                    <input class="form-control" placeholder="Enter your search key" type="text">
+                                    <button class="submit" type="submit" id="src0"><i class="icon-magnifier"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
+                        <%
+                            User user = (User) session.getAttribute("user");
+                            if (user == null) {
+                        %>
                         <div class="header-bottom-set dropdown">
-                            <a href="#">订单管理</a>
+                            <a href="views/member/login.jsp">登录|注册</a>
                         </div>
+                        <%
+                        } else {
+                        %>
                         <div class="header-bottom-set dropdown">
-                            <a href="memberServlet?action=logout">安全退出</a>
+                            <a>Welcome: <%=user.getUsername()%>
+                            </a>
                         </div>
+                        <%
+                            if (user.getType() == 1) {
+                        %>
+                        <div class="header-bottom-set dropdown">
+                            <a href="manage_login">后台管理</a>
+                        </div>
+                        <%
+                            }
+                        %>
+                        <div class="header-bottom-set dropdown">
+                            <a href="user?action=logout">退出</a>
+                        </div>
+                        <%
+                            }
+                        %>
                     </div>
                 </div>
                 <!-- Header Action End -->
@@ -73,7 +106,7 @@
                 <div class="login-register-wrapper">
                     <div class="login-register-tab-list nav">
                         <a class="active" href="index.jsp">
-                            <h4>订单已结算, 订单号-hello</h4>
+                            <h4>订单已结算, 订单号-${orderId}</h4>
                         </a>
                     </div>
                 </div>

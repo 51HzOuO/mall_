@@ -149,7 +149,7 @@
             $("#payment-done").click(function () {
                 $("#payment-modal").hide();
                 $("#modal-overlay").hide();
-                window.location.href = "支付完成后的跳转页面.jsp"; // 替换为实际的跳转页面
+                window.location.href = "order?action=saveOrder"; // 替换为实际的跳转页面
             });
 
             // 点击遮罩层关闭弹窗

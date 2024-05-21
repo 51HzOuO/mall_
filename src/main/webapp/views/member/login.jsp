@@ -15,6 +15,29 @@
     <script src="../../script/jquery-3.6.0.min.js"></script>
     <script>
         $(function () {
+            $("#username").blur(function () {
+                const username = $(this).val();
+                if (username === "") {
+                    $(".errorMsg").text("用户名不能为空").css("color", "red");
+                    return;
+                }
+                $.ajax({
+                    url: "../../user?action=checkUserName",
+                    type: "post",
+                    data: {
+                        username: username
+                    },
+                    success: function (data) {
+                        if (data === "ok") {
+                            $(".errorMsg").text("用户名可用").css("color", "green");
+                        } else if (data === 'format-error') {
+                            $(".errorMsg").html("用户名格式不正确<br>4-16位字母数字下划线").css("color", "red");
+                        } else {
+                            $(".errorMsg").text(data).css("color", "red");
+                        }
+                    }
+                })
+            })
             $("#sub-btn").click(function (event) {
                 event.preventDefault();  // 取消submit按钮的默认提交行为
                 const username = $("#username").val();
